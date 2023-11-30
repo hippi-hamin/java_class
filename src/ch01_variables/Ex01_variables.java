@@ -7,7 +7,7 @@ public class Ex01_variables {
 		// 를 입력할 수 있는 변수를 각각 선언해봅시다.
 		// 변수 선언
 		String name = "이하민";
-		double age = 25.9;  //
+		int age = 25;
 		double height = 182.8;
 		String address = "인천광역시 미추홀구 매소홀로 68, 203-1302";
 		String mobile = "010-8432-1035";
