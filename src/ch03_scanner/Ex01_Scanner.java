@@ -12,6 +12,16 @@ public class Ex01_Scanner {
 		int num1 = scanner.nextInt();
 		System.out.println(num1);
 		
+		System.out.print("이름을 입력하세요 : ");
+	    String name = scanner.next();    // next는 문자 입력 가능
+	    System.out.println(name);
+	    
+	    scanner.nextLine();
+	    
+		System.out.print("주소를 입력하세요 : ");
+		String address = scanner.nextLine(); // nextLine은 긴 문장 입력 가능.
+		System.out.println(address);
+				
 		
 	}
 

@@ -17,8 +17,7 @@ public class Ex02_Calculator {
 		System.out.println("합계 : " + sum);
 		System.out.println(num1 + "과 " + num2 + "의 합계는 " + sum + "입니다.");
 		System.out.println(num1 + " + " + num2 + " = " + sum);
-	
-		
+			
 		
 	}
 
