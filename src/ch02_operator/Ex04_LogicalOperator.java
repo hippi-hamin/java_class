@@ -35,8 +35,14 @@ public class Ex04_LogicalOperator {
         boolean result4 = (num1 > num2) && (num1 != num2);
         System.out.println(result4);
         
-        System.out.println(bool1);
-        System.out.println(!bool1);
+        System.out.println(bool1);   // true
+        System.out.println(!bool1);  // false
+        System.out.println(bool1 && bool2);    // false
+        System.out.println(!(bool1 && bool2)); // true
+        
+        System.out.println("Not 연산 수행 전 : " + bool2);
+        bool2 = !bool2;
+        System.out.println("Not 연산 수행 후 : " + bool2);
         
                 
 	}
