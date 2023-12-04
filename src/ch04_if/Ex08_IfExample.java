@@ -31,5 +31,21 @@ public static void main(String[] args) {
     }else if(num3 > num1 && num3 > num2) {
         System.out.println("가장 큰 숫자는 "+ num3 + "입니다.");
     }
+
+    int max = 0;
+    if (num1 > num2) {
+        if (num1 > num3) {
+            max = num1;
+        } else {
+            max = num3;
+        }
+    } else {
+        if (num2 > num3) {
+            max = num2;
+        } else {
+            max = num3;
+        }
     }
+    System.out.println("가장 큰 수는 " + max + "입니다.");
+}
 }
