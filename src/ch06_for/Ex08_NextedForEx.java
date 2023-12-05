@@ -8,12 +8,12 @@ public class Ex08_NextedForEx {
             System.out.println(i + "단");
             for (int j = 1; j < 10; j++) {
                     int mul = i * j;
-                if(j<9) {
-                    System.out.print(i + " X " + j + " = " + mul + ", ");
-                }else{
-                    System.out.println(i + " X " + j + " = " + mul);
+                System.out.print(i + "X" + j + "=" + mul);
+                System.out.print("\t");
                 }
+            // System.out.println();
+            System.out.print("\n");
             }
         }
     }
-}
+
