@@ -18,7 +18,7 @@ public class Ex01_ForBasic {
         }
 
         // 반복문 종료 후에도 반복변수를 사용하려면
-        int j = 0;
+        int j = 0;  // 변수를 전역변수로 설정
         for (j = 0; j < 3; j++) {
             System.out.println("j = " + j);
         }
