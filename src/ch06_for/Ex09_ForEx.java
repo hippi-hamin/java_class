@@ -9,8 +9,6 @@ public class Ex09_ForEx {
          * 출력(정답)
          * 5, 8  10, 4
          */
-        int x1 = 60%4;
-        int y1 = 60%5;
         for(int x = 1; x <= 10; x++){
             for(int y = 1; y <= 10; y++){
                 if(4 * x + 5 * y == 60) {
