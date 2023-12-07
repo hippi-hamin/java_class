@@ -19,7 +19,7 @@ public class Ex08_WhileEx {
          */
 
         Scanner sc = new Scanner(System.in);
-
+        System.out.println("어서오세요 hm's 가계부의 오신 것을 환영합니다.");
         boolean run = true;
         int in = 0,      // 예금
             out = 0,     // 출금
@@ -45,8 +45,10 @@ public class Ex08_WhileEx {
                     out = sc.nextInt();
                     if(remain < out){
                         System.out.println("잔액이 부족합니다.");
+                        System.out.println("현재 잔액은 " + remain + "원 입니다.");
                     } else {
                         remain -= out;
+                        System.out.println("출금이 완료되었습니다.");
                         System.out.println("현재 잔액은 " + remain + "원 입니다.");
                     }
                     break;
@@ -54,11 +56,11 @@ public class Ex08_WhileEx {
                     System.out.println("현재 잔액은 " + remain + "원 입니다.");
                     break;
                 case 4: // num == 4
-                    System.out.println("종료합니다.");
+                    System.out.println("이용해주셔서 감사합니다. 가계부를 종료합니다.");
                     run = false;
                     break;
                 default:
-                    System.out.println("잘못입력하셨습니다.");
+                    System.out.println("잘못 선택하셨습니다. 다시 입력해주십시오.");
                     break;
             }
         }
