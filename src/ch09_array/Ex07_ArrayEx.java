@@ -11,12 +11,13 @@ public class Ex07_ArrayEx {
         // 중첩 for를 이용하여 정렬하기
         for (int i = 0; i < num.length; i++) {
             for (int j = i+1; j < num.length; j++) {
-                if(num[i] > num[j]){
+                if(num[i] < num[j]){
                     temp = num[i];
                     num[i] = num[j];
                     num[j] = temp;
                 }
             }
+            System.out.println("num[i] = " + num[i]);
         }
     }
 }
