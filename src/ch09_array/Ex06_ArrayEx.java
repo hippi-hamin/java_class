@@ -9,7 +9,6 @@ public class Ex06_ArrayEx {
          * 스캐너로 배열에 값을 저장한 뒤
          * 입력된 값 중에서 가장 큰 값을 출력
          */
-
         int[] numbers = new int[5];
         Scanner sc = new Scanner(System.in);
         int max = 0;
