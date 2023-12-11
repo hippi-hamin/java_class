@@ -17,7 +17,9 @@ public class Ex09_ArrayEx {
             System.out.println("----------------------------------------------------------");
             System.out.print("선택> ");
             select = sc.nextInt();
+
             if (select == 1) {
+                // 학생수 입력 받고 해당 수 크기를 갖는 배열로 선언
                 System.out.print("학생수> ");
                 student = sc.nextInt();
                 if (student > 0) {
@@ -36,9 +38,11 @@ public class Ex09_ArrayEx {
                     System.out.println((i + 1) + "번 학생 점수 : " + stu[i]);
                 }
             }else if (select == 4) {
+                // 최댓값, 평균값 계산 및 출력
                 for (int i = 0; i < stu.length; i++) {
                     sum += stu[i];
                     for (int j = i + 1; j < stu.length; j++) {
+                        // 내림차순으로 정렬하기.
                         if (stu[i] < stu[j]) {
                             temp = stu[i];
                             stu[i] = stu[j];
