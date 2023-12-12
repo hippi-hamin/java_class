@@ -11,7 +11,7 @@ public class Student {
 //        System.out.println("Student = 기본생성자");
     }
 
-    // 이름, 학번, 학과를 매개변수로 하는 생성자
+    // 이름, 학번, 학과를 매개변수로 하는 생성자 매개변수의 이름은 필드값과 같게 맞춰야 함.
     public Student(String studentName, String studentNumber, String studentMajor){
 //        System.out.println("studentName = " + studentName + ", studentNumber = " + studentNumber + ", studentMajor = " + studentMajor);
         // 전달 받은 매개변수 값을 필드에 담기.
