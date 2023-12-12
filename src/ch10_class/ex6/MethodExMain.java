@@ -9,6 +9,7 @@ public class MethodExMain {
         // method1 호출
         methodEx.method1();
         System.out.println("호출 후");
+
         // method2 호출
         methodEx.method2("안녕하세요");
         String str1 = "오늘은 화요일";
@@ -18,14 +19,14 @@ public class MethodExMain {
         methodEx.method3();
         String result = methodEx.method3();
         System.out.println("result = " + result);
-        System.out.println(methodEx.method3());
 
         // method4 호출 후 결과값 출력
         int result1 = methodEx.method4();
         System.out.println("result1 = " + result1);
 
-        // method5 호출
+        // method5의 호출문 '안녕 & 1000 = 입력값'
         String result2 = methodEx.method5("안녕", 1000);
+        // method5의 실행문을 거쳐 나온 리턴값
         System.out.println("result2 = " + result2);
 
         int result3 = methodEx.method6(10, 20);
