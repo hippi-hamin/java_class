@@ -28,8 +28,8 @@ public class CalculatorMain {
                 cal.sub(a = sc.nextInt(), b = sc.nextInt());
             } else if (select == 3) {
                 System.out.println("두 개의 숫자를 입력하세요 : ");
-                int mul = cal.mul(a = sc.nextInt(), b = sc.nextInt());
-                System.out.println(mul);
+                int result = cal.mul(a = sc.nextInt(), b = sc.nextInt());
+                System.out.println(result);
             } else if (select == 4){
                 System.out.println("두 개의 숫자를 입력하세요 : ");
                 int result = cal.div();
