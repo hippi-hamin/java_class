@@ -24,27 +24,26 @@ public class BoardMain {
             System.out.print("선택> ");
             selectNo = sc.nextInt();
             if (selectNo == 1) {
-                board1 = new Board();
 
                 System.out.print("글번호 : ");
                 board1.setId(sc.nextLong());
-
                 System.out.print("제목 : ");
                 board1.setBoardTitle(sc.next());
                 System.out.print("작성자 : ");
                 board1.setBoardWriter(sc.next());
                 System.out.print("내용 : ");
                 board1.setBoardContents(sc.next());
-                //System.out.println("조회수 : " + board1.getBoardHits());
+
+                board1 = new Board();
 
             } else if (selectNo == 2) {
                 System.out.print("글번호를 입력하세요 : ");
                 Long id = sc.nextLong();
                 boolean findResult = board1.findById(id);
                 if(findResult){
-                    board1.print();
+                     board1.print();
                 } else {
-                    System.out.println("일치하는 글이 없습니다.");
+                    System.out.println("없는 글번호입니다.");
                 }
 
             } else if (selectNo == 3) {

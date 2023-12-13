@@ -73,12 +73,12 @@ public class Board {
     }
 
     // 필드값을 전부 매개변수로 갖는 생성자
+    // hits는 기본값을 0으로 하면 되기 때문에 생성자에서 제외
     public Board(Long id, String boardTitle, String boardWriter, String boardContents, int boardHits) {
         this.id = id;
         this.boardTitle = boardTitle;
         this.boardWriter = boardWriter;
         this.boardContents = boardContents;
-        this.boardHits = boardHits;
     }
 
     // 모든 필드값을 담는 print() 메서드
