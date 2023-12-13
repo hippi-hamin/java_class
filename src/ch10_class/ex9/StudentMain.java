@@ -18,5 +18,7 @@ public class StudentMain {
         System.out.println(student1);
         // 각각의 객체에서 print 메서드 호출하여 필드값 출력
         student.print();
+
+        System.out.println("student1 = " + student);
     }
 }
