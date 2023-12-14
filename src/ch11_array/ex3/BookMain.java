@@ -34,10 +34,15 @@ public class BookMain {
         book1.setBookpublisher("열린책들");
         // bookList 라는 ArrayList 에 book1추가
         bookList.add(book1);
-        // 매개변수 생성자 Book 객체(book2) 생성
-        Book book2 = new Book(1L, "내가 생각한 인생이 아니야", "류시화", 16200, "수오서재");
+        // 매개변수를 가진 생성자 Book의 객체(book2) 생성
+        Book book2 = new Book("내가 생각한 인생이 아니야", "류시화", 16200, "수오서재");
         // bookList 에 book2 추가
         bookList.add(book2);
+        // 매개변수를 가진 생성자 Book의 객체(book3) 생성
+        Book book3 = new Book("무서운 게 딱 좋아", "이구성",8000, "아이엘비");
+        // bookList 에 book3 추가
+        bookList.add(book3);
+
         // for문을 써서 bookList 전체 데이터 값 출력
         for (int i = 0; i < bookList.size(); i++) {
             System.out.println("book" + (i+1) + " = " + bookList.get(i));

@@ -61,12 +61,15 @@ public class Book {
         this.bookpublisher = bookpublisher;
     }
 
+    private static Long idValue = 1L;
+
     // 기본생성자
     public Book(){
+        this.id = idValue++; // 생성자 밖에 private static Long idValue = 1L; 있어서 사용 가능
     }
     // 필드의 모든 값을 매개변수로 갖는 Book 생성자
-    public Book(Long id, String bookTitle, String bookAuthor, int bookPrice, String bookpublisher) {
-        this.id = id;
+    public Book(String bookTitle, String bookAuthor, int bookPrice, String bookpublisher) {
+        this.id = idValue++;
         this.bookTitle = bookTitle;
         this.bookAuthor = bookAuthor;
         this.bookPrice = bookPrice;
