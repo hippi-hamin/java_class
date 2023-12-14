@@ -6,6 +6,7 @@ public class StudentService {
      * parameter : x
      * return : x
      */
+    // StudentRepository 클래스 객체 선언
     StudentRepository studentRepository = new StudentRepository();
     public void method1(){
         System.out.println("StudentService.method1");

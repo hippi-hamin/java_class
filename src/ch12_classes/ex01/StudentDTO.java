@@ -63,7 +63,9 @@ public class StudentDTO {
     public static void setIdValue(Long idValue) {
         StudentDTO.idValue = idValue;
     }
-
+    // 기본생성자 StudentDTO
+    public StudentDTO(){
+    }
     private static Long idValue = 1L;
     public StudentDTO(String studentName, int studentNumber, String studentMajor, String studentMobile) {
         this.id = idValue++;

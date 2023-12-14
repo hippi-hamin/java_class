@@ -25,8 +25,9 @@ public class BookMain {
     public static void main(String[] args) {
         // bookList에 Book 객체 담기
         List<Book> bookList = new ArrayList<>();
-        Book book1 = new Book();
         // 기본생성자로 객체(book1)생성
+        Book book1 = new Book();
+        // 객체(book1)에 필드값 넣어주기.
         book1.setId(1L);
         book1.setBookTitle("어린왕자");
         book1.setBookAuthor("앙투안 드 생텍쥐페리");
