@@ -55,7 +55,7 @@ public class StudentService {
     public void method4() {
         List<StudentDTO> studentDTOList = studentRepository.method4();
         for (StudentDTO studentDTO : studentDTOList){
-            System.out.println("studentDTO = " + studentDTO);
+            System.out.println("요청하신 학생 정보 = " + studentDTO);
         }
     }
 /**
@@ -70,8 +70,9 @@ public void method5() {
     StudentDTO studentDTO = studentRepository.method5(id);
     if(studentDTO != null){
         // 조회결과 있음
-    System.out.println("studentDTO = " + studentDTO);
+    System.out.println("요청하신 학생 정보 = " + studentDTO);
     } else {
+        // 조회결과 없음
         System.out.println("요청하신 정보를 찾을 수 없습니다.");
     }
 }
