@@ -42,8 +42,6 @@ public class StudentService {
 
         boolean result = studentRepository.method3(studentDTO);
 
-        System.out.println("result = " + result);
-
         if (result) {
             System.out.println("학생등록 성공");
         } else {
