@@ -30,10 +30,17 @@ public class StudentService {
      * Repository의 method3로 DTO 객체를 전달함.
      */
     public void method3() {
-        System.out.println("StudentService.method3");
-        StudentDTO studentDTO1 = new StudentDTO("하민", 20231111, "수학", "010-1111-1111");
+        System.out.print("학생의 이름 : ");
+        String name = sc.next();
+        System.out.print("학생의 학번(숫자만 입력하세요) : ");
+        int num = sc.nextInt();
+        System.out.print("학생의 전공 : ");
+        String Major = sc.next();
+        System.out.print("학생의 전화번호 : ");
+        String Mobile = sc.next();
+        StudentDTO studentDTO = new StudentDTO(name, num, Major, Mobile);
 
-        boolean result = studentRepository.method3(studentDTO1);
+        boolean result = studentRepository.method3(studentDTO);
 
         System.out.println("result = " + result);
 
