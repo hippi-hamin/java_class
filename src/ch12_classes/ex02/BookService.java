@@ -49,7 +49,7 @@ public class BookService {
      */
     public void findAll() {
         List<BookDTO> bookDTOList = bookRepository.findAll();
-        for (BookDTO bookDTO: bookDTOList) {
+        for (BookDTO bookDTO : bookDTOList) {
             System.out.println("bookDTO = " + bookDTO);
         }
     }
@@ -97,12 +97,13 @@ public class BookService {
             System.out.println("조회결과가 없습니다!");
         }
     }
+
     public void search() {
         System.out.print("검색어: ");
         String bookTitle = sc.next();
         List<BookDTO> bookDTOList = bookRepository.search(bookTitle);
         if (bookDTOList.size() > 0) {
-            for (BookDTO bookDTO: bookDTOList) {
+            for (BookDTO bookDTO : bookDTOList) {
                 System.out.println("bookDTO = " + bookDTO);
             }
         } else {
@@ -124,7 +125,7 @@ public class BookService {
             int bookPrice = sc.nextInt();
             // 지정한 id의 책만 가격을 수정해야 되기 때문에 id값과 bookPrice값을 같이 보내주어야 함.
             boolean updateResult = bookRepository.update(id, bookPrice);
-            if(updateResult){
+            if (updateResult) {
                 System.out.println("수정되었습니다.");
             } else {
                 System.out.println("수정 실패하였습니다.");
@@ -135,16 +136,14 @@ public class BookService {
         }
     }
 
-//    public void changePrice() {
-//        System.out.println("가격을 수정하고 싶은 책 제목을 입력하세요 : ");
-//        String title = sc.next();
-//        BookDTO bookDTO = bookRepository.findByTitle(title);
-//        if (bookDTO != null) {
-//            System.out.println(bookDTO.getBookTitle() + "의 제목을 가진 책의 가격은 " + bookDTO.getBookPrice() + "원 입니다.");
-//            System.out.println("가격을 얼마로 바꾸시겠습니까?");
-//            System.out.print(" > ");
-//            int price = sc.nextInt();
-//            bookRepository.changePrice(price);
-//        }
-//    }
+    public void delete() {
+        System.out.println("삭제할 id : ");
+        Long id = sc.nextLong();
+        boolean result = bookRepository.delete(id);
+        if (result) {
+            System.out.println("삭제 성공");
+        } else {
+            System.out.println("삭제 실패");
+        }
+    }
 }
