@@ -78,7 +78,8 @@ public class StudentDTO {
     @Override
     public String toString() {
         return "StudentDTO{" +
-                "studentName='" + studentName + '\'' +
+                "id=" + id +
+                ", studentName='" + studentName + '\'' +
                 ", studentNumber=" + studentNumber +
                 ", studentMajor='" + studentMajor + '\'' +
                 ", studentMobile='" + studentMobile + '\'' +

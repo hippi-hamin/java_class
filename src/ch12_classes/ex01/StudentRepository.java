@@ -48,7 +48,7 @@ public class StudentRepository {
      * return : StudentDTO
      */
     public StudentDTO method5(Long id) {
-        // id 와 일치하는 데이터가 있으면 해당 DTD - 객체를 리턴하고
+        // id 와 일치하는 데이터가 있으면 해당 DTO - 객체를 리턴하고
         // 없으면 null을 리턴함
         StudentDTO studentDTO = null;
         for (int i = 0; i < studentDTOList.size(); i++) {
