@@ -111,6 +111,30 @@ public class BookService {
         }
     }
 
+    public void update() {
+        // 수정할 id를 입력받음
+        // 해당 id 도서가 있다면 수정할 가격을 입력받고 수정 처리
+        // 없으면 없다고 출력
+        System.out.print("수정할 id: ");
+        Long id = sc.nextLong();
+        BookDTO bookDTO = bookRepository.findById(id);
+        if (bookDTO != null) {
+            // 조회결과 있음
+            System.out.println("수정할 가격 : ");
+            int bookPrice = sc.nextInt();
+            // 지정한 id의 책만 가격을 수정해야 되기 때문에 id값과 bookPrice값을 같이 보내주어야 함.
+            boolean updateResult = bookRepository.update(id, bookPrice);
+            if(updateResult){
+                System.out.println("수정되었습니다.");
+            } else {
+                System.out.println("수정 실패하였습니다.");
+            }
+        } else {
+            // 조회결과 없음
+            System.out.println("조회결과가 없습니다!");
+        }
+    }
+
 //    public void changePrice() {
 //        System.out.println("가격을 수정하고 싶은 책 제목을 입력하세요 : ");
 //        String title = sc.next();
