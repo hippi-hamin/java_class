@@ -84,8 +84,18 @@ public class MemberService {
             } else {
                 System.out.println("비밀번호가 틀렸습니다.");
             }
-
+        } else {
+            // 로그인이 되어 있지 않은 경우
+            System.out.println("해당 기능은 로그인 후 사용 가능합니다.");
         }
+    }
 
+    public void logout() {
+        if (loginEmail != null) {
+            loginEmail = null;
+            System.out.println("로그아웃 되었습니다.");
+        } else {
+            System.out.println("해당 기능은 로그인 후 사용 가능합니다.");
+        }
     }
 }
