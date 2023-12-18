@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class MemberService {
     Scanner sc = new Scanner(System.in);
     MemberRepository memberRepository = new MemberRepository();
+
     public void save() {
         System.out.print("이메일 : ");
         String memberEmail = sc.next();
@@ -31,10 +32,11 @@ public class MemberService {
     }
 
     private static String loginEmail = null;
+
     public void login() {
         System.out.print("이메일 : ");
         String memberEmail = sc.next();
-        System.out.println("비밀번호 : ");
+        System.out.print("비밀번호 : ");
         String memberPassword = sc.next();
         MemberDTO memberDTO = memberRepository.login(memberEmail, memberPassword);
         if (memberDTO != null) {
@@ -49,14 +51,14 @@ public class MemberService {
 
     public void memberList() {
         List<MemberDTO> memberDTOList = memberRepository.memberList();
-        for (MemberDTO memberDTO : memberDTOList){
+        for (MemberDTO memberDTO : memberDTOList) {
             System.out.println(memberDTO);
         }
     }
 
     public void update() {
         // 로그인 되어 있는 경우
-        if(loginEmail != null){
+        if (loginEmail != null) {
             // 조회결과 있음
             System.out.print("수정할 전화번호를 입력하세요 : ");
             String memberMobile = sc.next();
@@ -70,5 +72,20 @@ public class MemberService {
             // 로그인이 되어 있지 않은 경우
             System.out.println("해당 기능은 로그인 후 사용 가능합니다.");
         }
+    }
+
+    public void delete() {
+        if (loginEmail != null) {
+            System.out.println("회원 탈퇴를 원하신다면 비밀번호를 입력하세요 : ");
+            String memberPassword = sc.next();
+            boolean result = memberRepository.delete(loginEmail, memberPassword);
+            if (result) {
+                System.out.println("회원 탈퇴 되었습니다.");
+            } else {
+                System.out.println("비밀번호가 틀렸습니다.");
+            }
+
+        }
+
     }
 }

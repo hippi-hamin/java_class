@@ -56,4 +56,16 @@ public class MemberRepository {
         }
         return result;
     }
+
+    public boolean delete(String loginEmail, String memberPassword) {
+        boolean result = false;
+        for (int i = 0; i < memberDTOList.size(); i++) {
+            // memberDTOList.get(i) 인덱스에서 memberlogin 정보를 찾는 문장
+            if (loginEmail.equals(memberDTOList.get(i).getMemberEmail()) && memberPassword.equals(memberDTOList.get(i).getMemberPassword())) {
+                    memberDTOList.remove(i);
+                    result = true;
+                }
+            }
+        return result;
+    }
 }
