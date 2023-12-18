@@ -35,7 +35,7 @@ public class MemberMain {
                 memberService.logout();
             } else if (selectNo == 7) {
                 // 호출하는 문장 작성
-
+                memberService.duplicate();
             }else if (selectNo == 0) {
                 run = false;
             }

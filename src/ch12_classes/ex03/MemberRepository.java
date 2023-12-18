@@ -46,7 +46,7 @@ public class MemberRepository {
     public boolean update(String loginEmail, String memberMobile) {
     boolean result = false;
         for (int i = 0; i < memberDTOList.size(); i++) {
-            // memberDTOList.get(i) 인덱스에서 memberlogin 정보를 찾는 문장
+            // memberDTOList.get(i) 인덱스에서 memberEmail 정보를 찾는 문장
             if (loginEmail.equals(memberDTOList.get(i).getMemberEmail())){
                 // memberDTOList.get(i) = 해당 인덱스에 접근 하여
                 // setMemberMobile(memberMobile) = 해당 데이터에 member 값을 수정.
@@ -67,5 +67,15 @@ public class MemberRepository {
                 }
             }
         return result;
+    }
+
+    public MemberDTO duplicate(String memberEmail) {
+        MemberDTO memberDTO = null;
+        for (int i = 0; i < memberDTOList.size(); i++) {
+            if (memberEmail.equals(memberDTOList.get(i).getMemberEmail())) {
+                memberDTO = memberDTOList.get(i);
+            }
+        }
+        return memberDTO;
     }
 }
