@@ -28,4 +28,19 @@ public class MemberService {
             System.out.println("회원가입 실패");
         }
     }
+
+    public void login() {
+        System.out.print("이메일 : ");
+        String memberEmail = sc.next();
+        System.out.println("비밀번호 : ");
+        String memberPassword = sc.next();
+        MemberDTO memberDTO = memberRepository.login(memberEmail, memberPassword);
+        if (memberDTO != null) {
+            // 조회결과 있음
+            System.out.println("로그인 성공");
+        } else {
+            // 조회결과 없음
+            System.out.println("로그인 실패");
+        }
+    }
 }
