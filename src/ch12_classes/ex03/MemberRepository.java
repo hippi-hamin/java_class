@@ -43,14 +43,40 @@ public class MemberRepository {
         return memberDTOList;
     }
 
-    public boolean update(String loginEmail, String memberMobile) {
+    public boolean updatePassword(String loginEmail, String updatePassword) {
         boolean result = false;
         for (int i = 0; i < memberDTOList.size(); i++) {
             // memberDTOList.get(i) 인덱스에서 LoginEmail과 같은 memberEmail 정보를 찾는 문장
             if (loginEmail.equals(memberDTOList.get(i).getMemberEmail())) {
                 // memberDTOList.get(i) = 해당 인덱스에 접근 하여
                 // setMemberMobile(memberMobile) = 해당 데이터에 member 값을 수정.
-                memberDTOList.get(i).setMemberMobile(memberMobile);
+                memberDTOList.get(i).setMemberMobile(updatePassword);
+                result = true;
+            }
+        }
+        return result;
+    }
+    public boolean updateName(String loginEmail, String updateName) {
+        boolean result = false;
+        for (int i = 0; i < memberDTOList.size(); i++) {
+            // memberDTOList.get(i) 인덱스에서 LoginEmail과 같은 memberEmail 정보를 찾는 문장
+            if (loginEmail.equals(memberDTOList.get(i).getMemberEmail())) {
+                // memberDTOList.get(i) = 해당 인덱스에 접근 하여
+                // setMemberMobile(memberMobile) = 해당 데이터에 member 값을 수정.
+                memberDTOList.get(i).setMemberMobile(updateName);
+                result = true;
+            }
+        }
+        return result;
+    }
+    public boolean updateMobile(String loginEmail, String updateMobile) {
+        boolean result = false;
+        for (int i = 0; i < memberDTOList.size(); i++) {
+            // memberDTOList.get(i) 인덱스에서 LoginEmail과 같은 memberEmail 정보를 찾는 문장
+            if (loginEmail.equals(memberDTOList.get(i).getMemberEmail())) {
+                // memberDTOList.get(i) = 해당 인덱스에 접근 하여
+                // setMemberMobile(memberMobile) = 해당 데이터에 member 값을 수정.
+                memberDTOList.get(i).setMemberMobile(updateMobile);
                 result = true;
             }
         }

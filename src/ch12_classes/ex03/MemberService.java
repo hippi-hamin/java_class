@@ -44,6 +44,7 @@ public class MemberService {
     }
 
     private static String loginEmail = null;
+    private static String loginPassword = null;
 
     public void login() {
         System.out.print("이메일 : ");
@@ -55,6 +56,7 @@ public class MemberService {
             // 조회결과 있음
             System.out.println("로그인 성공");
             loginEmail = memberEmail;
+            loginPassword = memberPassword;
         } else {
             // 조회결과 없음
             System.out.println("로그인 실패");
@@ -69,24 +71,88 @@ public class MemberService {
     }
 
     public void update() {
+//        // 로그인 되어 있는 경우
+//        if (loginEmail != null) {
+//            // 조회결과 있음
+//            System.out.print("수정할 전화번호를 입력하세요 : ");
+//            String memberMobile = sc.next();
+//            boolean updateResult = memberRepository.update(loginEmail, memberMobile);
+//
+//            if (updateResult) {
+//                System.out.println("수정되었습니다.");
+//            } else {
+//                System.out.println("수정 실패하였습니다.");
+//            }
+//        } else {
+//            // 로그인이 되어 있지 않은 경우
+//            System.out.println("해당 기능은 로그인 후 사용 가능합니다.");
+//        }
+//    }
         // 로그인 되어 있는 경우
         if (loginEmail != null) {
+            boolean run = true;
+            int selectNo = 0;
             // 조회결과 있음
-            System.out.print("수정할 전화번호를 입력하세요 : ");
-            String memberMobile = sc.next();
-            boolean updateResult = memberRepository.update(loginEmail, memberMobile);
-
-            if (updateResult) {
-                System.out.println("수정되었습니다.");
-            } else {
-                System.out.println("수정 실패하였습니다.");
+            while (run) {
+                System.out.println("수정할 정보를 입력하세요 : ");
+                System.out.println("1.비밀번호 | 2.이름 | 3.전화번호 | 0.종료");
+                System.out.println("-----------------------------------------------------------------------------------------");
+                System.out.print("선택> ");
+                selectNo = sc.nextInt();
+                if (selectNo == 1) {
+                    System.out.print("현재 비밀번호를 입력하세요 : ");
+                    String memberPassword = sc.next();
+                    if (loginPassword.equals(memberPassword)) {
+                        System.out.print("바꿀 비밀번호를 입력하세요 : ");
+                        String updatePassword = sc.next();
+                        boolean updateResult = memberRepository.updatePassword(loginEmail, updatePassword);
+                        if (updateResult) {
+                            System.out.println("수정되었습니다.");
+                        } else {
+                            System.out.println("수정 실패하였습니다.");
+                        }
+                    } else {
+                        System.out.println("비밀번호가 틀렸습니다.");
+                    }
+                } else if (selectNo == 2) {
+                    System.out.print("현재 비밀번호를 입력하세요 : ");
+                    String memberPassword = sc.next();
+                    if (loginPassword.equals(memberPassword)) {
+                        System.out.print("바뀐 이름을 입력하세요 : ");
+                        String updateName = sc.next();
+                        boolean updateResult = memberRepository.updateName(loginEmail, updateName);
+                        if (updateResult) {
+                            System.out.println("수정되었습니다.");
+                        } else {
+                            System.out.println("수정 실패하였습니다.");
+                        }
+                    } else {
+                        System.out.println("비밀번호가 틀렸습니다.");
+                    }
+                } else if (selectNo == 3) {
+                    System.out.print("비밀번호를 입력하세요 : ");
+                    String memberPassword = sc.next();
+                    if (loginPassword.equals(memberPassword)) {
+                        System.out.print("바뀐 전화번호를 입력하세요 : ");
+                        String memberMobile = sc.next();
+                        boolean updateResult = memberRepository.updateMobile(loginEmail, memberMobile);
+                        if (updateResult) {
+                            System.out.println("수정되었습니다.");
+                        } else {
+                            System.out.println("수정 실패하였습니다.");
+                        }
+                    } else {
+                        System.out.println("비밀번호가 틀렸습니다.");
+                    }
+                } else if (selectNo == 0) {
+                    run = false;
+                }
             }
         } else {
             // 로그인이 되어 있지 않은 경우
             System.out.println("해당 기능은 로그인 후 사용 가능합니다.");
         }
     }
-
     public void delete() {
         if (loginEmail != null) {
             System.out.println("회원 탈퇴를 원하신다면 비밀번호를 입력하세요 : ");
