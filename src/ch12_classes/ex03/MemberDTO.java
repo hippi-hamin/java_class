@@ -59,7 +59,7 @@ public class MemberDTO {
     // 매개변수를 갖는 생성자
 
     public static Long idValue = 1L;
-    public MemberDTO(Long id, String memberEmail, String memberPassword, String memberName, String memberMobile) {
+    public MemberDTO(String memberEmail, String memberPassword, String memberName, String memberMobile) {
         this.id = idValue++;
         this.memberEmail = memberEmail;
         this.memberPassword = memberPassword;
