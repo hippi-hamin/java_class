@@ -59,6 +59,7 @@ public class BookRepository {
         }
         return bookDTO;
     }
+
     /**
      * 도서조회 메서드
      * name: findByTitle
@@ -81,15 +82,17 @@ public class BookRepository {
     }
 
     public List<BookDTO> search(String bookTitle) {
-        // 검색결과를 담을 List 선언
+        // 검색결과를 담을 bookDTOS 라는 List 선언
         List<BookDTO> bookDTOS = new ArrayList<>();
         for (int i = 0; i < bookDTOList.size(); i++) {
             // 저장되어 있는 도서명에 검색어가 포함되어 있으면 true
             if (bookDTOList.get(i).getBookTitle().contains(bookTitle)) {
                 // 조건을 만족하면 bookDTOS 에 추가
-//                bookDTOS.add(bookDTOList.get(i));
                 BookDTO bookDTO = bookDTOList.get(i);
+                // bookDTO로 꺼낸 값을 bookDTOS에 추가하기 위해 사용.
                 bookDTOS.add(bookDTO);
+                // 위의 두 작업을 한 번에 한 문장.
+//                bookDTOS.add(bookDTOList.get(i));
             }
         }
         return bookDTOS;
@@ -98,7 +101,11 @@ public class BookRepository {
     public boolean update(Long id, int bookPrice) {
         boolean result = false;
         for (int i = 0; i < bookDTOList.size(); i++) {
-            if (id.equals(bookDTOList.get(i).getId())){
+            // bookDTOList.get(i) 인덱스 안에 id 정보를 찾는 문장
+            if (id.equals(bookDTOList.get(i).getId())) {
+
+                // bookDTOList.get(i) = 해당 인덱스에 접근을 해서,
+                // setBookPrice(bookPrice) = 해당 데이터에 price 값을 바꾸기.
                 bookDTOList.get(i).setBookPrice(bookPrice);
                 result = true;
             }
@@ -109,7 +116,7 @@ public class BookRepository {
     public boolean delete(Long id) {
         boolean result = false;
         for (int i = 0; i < bookDTOList.size(); i++) {
-            if (id.equals(bookDTOList.get(i).getId())){
+            if (id.equals(bookDTOList.get(i).getId())) {
                 bookDTOList.remove(i);
             }
         }
