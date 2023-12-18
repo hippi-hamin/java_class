@@ -11,7 +11,7 @@ public class MemberMain {
 
         while (run) {
             System.out.println("-----------------------------------------------------------------------------------------");
-            System.out.println("1.회원가입 | 2.로그인 | 3.회원목록 조회 | 4.회원정보 수정 | 5.회원탈퇴 | 6.로그아웃 | 7.이메일 중복체크 | 0.종료");
+            System.out.println("1.회원가입 | 2.로그인 | 3.회원목록 조회 | 4.회원정보 수정 | 5.회원탈퇴 | 6.로그아웃 | 0.종료");
             System.out.println("-----------------------------------------------------------------------------------------");
             System.out.print("선택> ");
             selectNo = sc.nextInt();
@@ -33,10 +33,7 @@ public class MemberMain {
             } else if (selectNo == 6) {
                 // 호출하는 문장 작성
                 memberService.logout();
-            } else if (selectNo == 7) {
-                // 호출하는 문장 작성
-                memberService.duplicate();
-            }else if (selectNo == 0) {
+            } else if (selectNo == 0) {
                 run = false;
             }
         }

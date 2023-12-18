@@ -32,7 +32,7 @@ public class MemberRepository {
         // 없으면 null을 리턴함
         MemberDTO memberDTO = null;
         for (int i = 0; i < memberDTOList.size(); i++) {
-            if (memberEmail.equals(memberDTOList.get(i).getMemberEmail()) && memberPassword.equals(memberDTOList.get(i).getMemberPassword())){
+            if (memberEmail.equals(memberDTOList.get(i).getMemberEmail()) && memberPassword.equals(memberDTOList.get(i).getMemberPassword())) {
                 memberDTO = memberDTOList.get(i);
             }
         }
@@ -44,10 +44,10 @@ public class MemberRepository {
     }
 
     public boolean update(String loginEmail, String memberMobile) {
-    boolean result = false;
+        boolean result = false;
         for (int i = 0; i < memberDTOList.size(); i++) {
-            // memberDTOList.get(i) 인덱스에서 memberEmail 정보를 찾는 문장
-            if (loginEmail.equals(memberDTOList.get(i).getMemberEmail())){
+            // memberDTOList.get(i) 인덱스에서 LoginEmail과 같은 memberEmail 정보를 찾는 문장
+            if (loginEmail.equals(memberDTOList.get(i).getMemberEmail())) {
                 // memberDTOList.get(i) = 해당 인덱스에 접근 하여
                 // setMemberMobile(memberMobile) = 해당 데이터에 member 값을 수정.
                 memberDTOList.get(i).setMemberMobile(memberMobile);
@@ -62,20 +62,21 @@ public class MemberRepository {
         for (int i = 0; i < memberDTOList.size(); i++) {
             // memberDTOList.get(i) 인덱스에서 memberlogin 정보를 찾는 문장
             if (loginEmail.equals(memberDTOList.get(i).getMemberEmail()) && memberPassword.equals(memberDTOList.get(i).getMemberPassword())) {
-                    memberDTOList.remove(i);
-                    result = true;
-                }
+                memberDTOList.remove(i);
+                result = true;
             }
+        }
         return result;
     }
 
-    public MemberDTO duplicate(String memberEmail) {
-        MemberDTO memberDTO = null;
+      public boolean emailCheck(String memberEmail) {
+        boolean result = true;
         for (int i = 0; i < memberDTOList.size(); i++) {
             if (memberEmail.equals(memberDTOList.get(i).getMemberEmail())) {
-                memberDTO = memberDTOList.get(i);
+                // 중복되는 이메일이 있다 => 결과를 false로 주자
+                result = false;
             }
         }
-        return memberDTO;
+        return result;
     }
 }
