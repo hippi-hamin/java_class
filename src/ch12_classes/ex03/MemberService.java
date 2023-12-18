@@ -2,6 +2,7 @@ package ch12_classes.ex03;
 
 import ch12_classes.ex02.BookDTO;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class MemberService {
@@ -41,6 +42,13 @@ public class MemberService {
         } else {
             // 조회결과 없음
             System.out.println("로그인 실패");
+        }
+    }
+
+    public void memberList() {
+        List<MemberDTO> memberDTOList = memberRepository.memberList();
+        for (MemberDTO memberDTO : memberDTOList){
+            System.out.println(memberDTO);
         }
     }
 }
