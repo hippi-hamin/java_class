@@ -30,6 +30,7 @@ public class MemberService {
         }
     }
 
+    private static String loginEmail = null;
     public void login() {
         System.out.print("이메일 : ");
         String memberEmail = sc.next();
@@ -39,6 +40,7 @@ public class MemberService {
         if (memberDTO != null) {
             // 조회결과 있음
             System.out.println("로그인 성공");
+            loginEmail = memberEmail;
         } else {
             // 조회결과 없음
             System.out.println("로그인 실패");
@@ -49,6 +51,24 @@ public class MemberService {
         List<MemberDTO> memberDTOList = memberRepository.memberList();
         for (MemberDTO memberDTO : memberDTOList){
             System.out.println(memberDTO);
+        }
+    }
+
+    public void update() {
+        // 로그인 되어 있는 경우
+        if(loginEmail != null){
+            // 조회결과 있음
+            System.out.print("수정할 전화번호를 입력하세요 : ");
+            String memberMobile = sc.next();
+            boolean updateResult = memberRepository.update(loginEmail, memberMobile);
+            if (updateResult) {
+                System.out.println("수정되었습니다.");
+            } else {
+                System.out.println("수정 실패하였습니다.");
+            }
+        } else {
+            // 로그인이 되어 있지 않은 경우
+            System.out.println("해당 기능은 로그인 후 사용 가능합니다.");
         }
     }
 }
