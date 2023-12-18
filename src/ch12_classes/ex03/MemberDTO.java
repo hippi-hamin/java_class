@@ -53,7 +53,7 @@ public class MemberDTO {
     }
 
     // 기본생성자
-    public void Member(){
+    public MemberDTO(){
     }
 
     // 매개변수를 갖는 생성자
