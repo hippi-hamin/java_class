@@ -130,4 +130,11 @@ public class BoardService {
                     boardDTO.getCreatedAt() + "\t");
         }
     }
+
+    public void testData() {
+        for (int i = 0; i < 11; i++) {
+            BoardDTO boardDTO = new BoardDTO("title" + i, "writer" + i, "1234", "contents" + i);
+            boardRepository.write(boardDTO);
+        }
+    }
 }
