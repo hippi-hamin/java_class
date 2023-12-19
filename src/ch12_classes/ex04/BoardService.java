@@ -56,7 +56,8 @@ public class BoardService {
         // 해당 id 도서가 있다면 수정할 가격을 입력받고 수정 처리
         // 없으면 없다고 출력
         System.out.print("수정할 글 번호 : ");
-        Long id = sc.nextLong();sc.nextLine();
+        Long id = sc.nextLong();
+        sc.nextLine();
         // 위에서 받은 id 값을 갖는 책이 있는 지 찾는 문장
         BoardDTO boardDTO = boardRepository.findById(id);
         if (boardDTO != null) {
@@ -80,6 +81,28 @@ public class BoardService {
                 } else {
                     System.out.println("비밀번호가 틀렸습니다.");
                 }
+            }
+        }
+    }
+
+    public void delete() {
+        BoardDTO boardDTO = null;
+        boolean run = true;
+        System.out.println("삭제할 글번호 : ");
+        Long id = sc.nextLong();
+        while (run) {
+            System.out.print("삭제를 희망하시면 비밀번호를 입력하세요 : ");
+            String boardPass = sc.nextLine();
+            if (boardPass.equals(boardDTO.getBoardPass())) {
+                boolean result = boardRepository.delete(id);
+                if (result) {
+                    System.out.println("삭제 성공");
+                    run = false;
+                } else {
+                    System.out.println("삭제 실패");
+                }
+            } else {
+                System.out.println("비밀번호가 틀렸습니다.");
             }
         }
     }
