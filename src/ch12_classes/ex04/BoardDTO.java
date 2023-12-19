@@ -3,12 +3,15 @@ package ch12_classes.ex04;
 public class BoardDTO {
     //필드
     private Long id; // 글번호
-    private String boardTitles; // 제목
+    private String boardTitle; // 제목
     private String boardWriter; // 작성자
     private String boardContents; // 내용
     private String boardPass; // 비밀번호
+    private int boardHits; // 조회수
 
     // getter/setter
+
+
     public Long getId() {
         return id;
     }
@@ -17,12 +20,12 @@ public class BoardDTO {
         this.id = id;
     }
 
-    public String getBoardTitles() {
-        return boardTitles;
+    public String getBoardTitle() {
+        return boardTitle;
     }
 
-    public void setBoardTitles(String boardTitles) {
-        this.boardTitles = boardTitles;
+    public void setBoardTitle(String boardTitle) {
+        this.boardTitle = boardTitle;
     }
 
     public String getBoardWriter() {
@@ -49,6 +52,14 @@ public class BoardDTO {
         this.boardPass = boardPass;
     }
 
+    public int getBoardHits() {
+        return boardHits;
+    }
+
+    public void setBoardHits(int boardHits) {
+        this.boardHits = boardHits;
+    }
+
     // 기본생성자
     public BoardDTO(){
 
@@ -57,21 +68,22 @@ public class BoardDTO {
     // idValue 절댓값으로 삼아 값을 중가시키는 메서드
     public static Long idValue = 1L;
     // 필드 값을 매개변수로 갖는 기본 생성자
-    public BoardDTO(String boardTitles, String boardWriter, String boardContents, String boardPass) {
+    public BoardDTO(String boardTitle, String boardWriter, String boardContents, String boardPass) {
         this.id = idValue++;
-        this.boardTitles = boardTitles;
+        this.boardTitle = boardTitle;
         this.boardWriter = boardWriter;
         this.boardContents = boardContents;
         this.boardPass = boardPass;
     }
-
+    public void print(){
+        System.out.println("글번호 : " + id + " |" + " 제목 : " + boardTitle + " |" + " 작성자 : " + boardWriter + " |" +  " 조회수 : " + boardHits);
+    }
     // toString
-
     @Override
     public String toString() {
         return "BoardDTO{" +
                 "id=" + id +
-                ", boardTitles='" + boardTitles + '\'' +
+                ", boardTitles='" + boardTitle + '\'' +
                 ", boardWriter='" + boardWriter + '\'' +
                 ", boardContents='" + boardContents + '\'' +
                 ", boardPass='" + boardPass + '\'' +
