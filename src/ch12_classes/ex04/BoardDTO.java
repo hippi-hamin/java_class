@@ -7,7 +7,11 @@ public class BoardDTO {
     private String boardWriter; // 작성자
     private String boardContents; // 내용
     private String boardPass; // 비밀번호
+
+    // int & long 은 초기값 0
+    // Long은 초기값 null
     private int boardHits; // 조회수
+
 
     // getter/setter
 

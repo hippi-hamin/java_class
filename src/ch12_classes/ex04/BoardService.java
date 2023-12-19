@@ -20,7 +20,7 @@ public class BoardService {
         String boardContents = sc.nextLine();
         System.out.print("비밀번호 : ");
         String boardPass = sc.nextLine();
-        // boardDTO에 스캐너로 받은 정보를 넘겨주는 생성자 선언
+        // boardDTO에 스캐너로 받은 정보를 넘겨주는 객체 선언
         BoardDTO boardDTO = new BoardDTO(boardTitle, boardWriter, boardContents, boardPass);
         // boardRepository를 호출하면서 정보 넘겨준 후 result 받겠다.
         boolean result = BoardRepository.write(boardDTO);
@@ -34,8 +34,10 @@ public class BoardService {
 
     public void list() {
         List<BoardDTO> boardDTOList = boardRepository.list();
+        System.out.println("id\t" + "title\t" + "writer\t" + "hits\t");
         for (BoardDTO boardDTO : boardDTOList) {
-            System.out.println(boardDTO);
+            System.out.println(boardDTO.getId() + "\t" + boardDTO.getBoardTitle() + "\t" +
+                    boardDTO.getBoardWriter() + "\t" + boardDTO.getBoardHits() + "\t");
         }
     }
 
@@ -68,6 +70,7 @@ public class BoardService {
                 System.out.print("비밀번호를 입력하세요 : ");
                 String boardPass = sc.nextLine();
                 if (boardPass.equals(boardDTO.getBoardPass())) {
+                    // 비밀번호가 맞으면 수정할 제목, 내용 이력받고 수정 처리.
                     System.out.print("수정할 제목 : ");
                     String updateTitle = sc.nextLine();
                     System.out.println("수정할 내용 : ");

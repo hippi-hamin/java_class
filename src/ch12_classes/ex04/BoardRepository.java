@@ -8,6 +8,7 @@ import java.util.List;
 public class BoardRepository {
 
     private static List<BoardDTO> boardDTOList = new ArrayList<>();
+
     /**
      * 글작성 메서드
      * name : write
@@ -20,14 +21,29 @@ public class BoardRepository {
         return boardDTOList.add(boardDTO);
     }
 
+    /**
+     * 글목록 메서드
+     * name : list
+     * parameter : x
+     * @return : ArrayList
+     * 실행내용
+     * Service로 부터 전달 받았던 모든 DTO 객체 리스트를 호출 및 리턴.
+     */
     public List<BoardDTO> list() {
         return boardDTOList;
     }
 
+    /**
+     * 글조회 메서드
+     * name : findById
+     * @param id
+     * @return : BoardDTO
+     * 실행내용
+     */
     public BoardDTO findById(Long id) {
         BoardDTO boardDTO = null;
         for (BoardDTO boardDTO1 : boardDTOList) {
-            if (id.equals(boardDTO1.getId())){
+            if (id.equals(boardDTO1.getId())) {
                 boardDTO1.setBoardHits();
                 boardDTO = boardDTO1;
             }
@@ -78,4 +94,5 @@ public class BoardRepository {
         }
         return boardDTOS;
     }
+
 }
