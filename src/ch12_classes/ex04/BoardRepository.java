@@ -1,5 +1,7 @@
 package ch12_classes.ex04;
 
+import ch12_classes.ex02.BookDTO;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,8 +56,26 @@ public class BoardRepository {
         for (int i = 0; i < boardDTOList.size(); i++) {
             if (id.equals(boardDTOList.get(i).getId())) {
                 boardDTOList.remove(i);
+                return true;
             }
         }
         return result;
+    }
+
+    public List<BoardDTO> search(String boardTitle) {
+        // 검색결과를 담을 bookDTOS 라는 List 선언
+        List<BoardDTO> boardDTOS = new ArrayList<>();
+        for (int i = 0; i < boardDTOList.size(); i++) {
+            // 저장되어 있는 글제목에 검색어가 포함되어 있으면 true
+            if (boardDTOList.get(i).getBoardTitle().contains(boardTitle)) {
+                // 조건을 만족하면 boardDTOS 에 추가
+                BoardDTO boardDTO = boardDTOList.get(i);
+                // boardDTO로 꺼낸 값을 boardDTOS에 추가하기 위해 사용.
+                boardDTOS.add(boardDTO);
+                // 위의 두 작업을 한 번에 한 문장.
+//                boardDTOS.add(boardDTOList.get(i));
+            }
+        }
+        return boardDTOS;
     }
 }

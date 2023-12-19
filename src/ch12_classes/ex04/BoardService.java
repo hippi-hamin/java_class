@@ -1,6 +1,7 @@
 package ch12_classes.ex04;
 
 import ch10_class.ex11.Board;
+import ch12_classes.ex02.BookDTO;
 import ch12_classes.ex03.MemberDTO;
 
 import java.util.List;
@@ -40,7 +41,7 @@ public class BoardService {
 
     public void findById() {
         System.out.print("조회 글번호 : ");
-        Long id = sc.nextLong();
+        Long id = sc.nextLong();sc.nextLine();
         BoardDTO boardDTO = boardRepository.findById(id);
         if (boardDTO != null) {
             System.out.println("조회하신 글의 정보입니다 : " + boardDTO);
@@ -86,10 +87,10 @@ public class BoardService {
     }
 
     public void delete() {
-        BoardDTO boardDTO = null;
         boolean run = true;
         System.out.println("삭제할 글번호 : ");
-        Long id = sc.nextLong();
+        Long id = sc.nextLong();sc.nextLine();
+        BoardDTO boardDTO = boardRepository.findById(id);
         while (run) {
             System.out.print("삭제를 희망하시면 비밀번호를 입력하세요 : ");
             String boardPass = sc.nextLine();
@@ -104,6 +105,21 @@ public class BoardService {
             } else {
                 System.out.println("비밀번호가 틀렸습니다.");
             }
+        }
+    }
+
+    public void search() {
+        System.out.print("검색할 제목 : ");
+        String boardTitle = sc.nextLine();
+        // 검색 결과가 여러 개 일 수 있기 때문에 List 메서드를 사용해 줌.
+        List<BoardDTO> boardDTOList = boardRepository.search(boardTitle);
+        if (boardDTOList.size() > 0) {
+            for (BoardDTO boardDTO : boardDTOList) {
+                System.out.println("boardDTO = " + boardDTO);
+            }
+        } else {
+            // boardDTOList.size() == 0 => 결과가 없다
+            System.out.println("검색 결과가 없습니다!");
         }
     }
 }

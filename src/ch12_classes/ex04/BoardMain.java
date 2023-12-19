@@ -14,7 +14,7 @@ public class BoardMain {
             System.out.println("1.글작성 | 2.글목록 | 3.글조회 | 4.글수정 | 5.글삭제 | 6.검색 | 0.종료");
             System.out.println("-----------------------------------------------------------------------------------------");
             System.out.print("선택> ");
-            selectNo = sc.nextInt();
+            selectNo = sc.nextInt();sc.nextLine();
             if (selectNo == 1) {
                 // 호출하는 문장 작성
                 boardService.write();
@@ -32,7 +32,7 @@ public class BoardMain {
                 boardService.delete();
             } else if (selectNo == 6) {
                 // 호출하는 문장 작성
-
+                boardService.search();
             } else if (selectNo == 0) {
                 run = false;
             }
