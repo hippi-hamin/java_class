@@ -26,9 +26,26 @@ public class BoardRepository {
         BoardDTO boardDTO = null;
         for (BoardDTO boardDTO1 : boardDTOList) {
             if (id.equals(boardDTO1.getId())){
+                boardDTO1.setBoardHits();
                 boardDTO = boardDTO1;
             }
         }
         return boardDTO;
+    }
+
+    public boolean update(Long id, String updateTitle, String updateContents) {
+        boolean result = false;
+        for (int i = 0; i < boardDTOList.size(); i++) {
+            // memberDTOList.get(i) 인덱스에서 LoginEmail과 같은 memberEmail 정보를 찾는 문장
+            if (id.equals(boardDTOList.get(i).getId())) {
+                // memberDTOList.get(i) = 해당 인덱스에 접근 하여
+                // setBoardTitle(updateTitle) = 해당 데이터에 board 값을 수정.
+                boardDTOList.get(i).setBoardTitle(updateTitle);
+                // setBoardContents(updateContents) = 해당 데이터에 board 값을 수정.
+                boardDTOList.get(i).setBoardContents(updateContents);
+                result = true;
+            }
+        }
+        return result;
     }
 }

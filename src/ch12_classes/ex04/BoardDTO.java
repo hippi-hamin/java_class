@@ -56,13 +56,12 @@ public class BoardDTO {
         return boardHits;
     }
 
-    public void setBoardHits(int boardHits) {
-        this.boardHits = boardHits;
+    public void setBoardHits() {
+        this.boardHits++;
     }
 
     // 기본생성자
     public BoardDTO(){
-
     }
 
     // idValue 절댓값으로 삼아 값을 중가시키는 메서드
@@ -75,18 +74,15 @@ public class BoardDTO {
         this.boardContents = boardContents;
         this.boardPass = boardPass;
     }
-    public void print(){
-        System.out.println("글번호 : " + id + " |" + " 제목 : " + boardTitle + " |" + " 작성자 : " + boardWriter + " |" +  " 조회수 : " + boardHits);
-    }
+
     // toString
     @Override
     public String toString() {
         return "BoardDTO{" +
                 "id=" + id +
-                ", boardTitles='" + boardTitle + '\'' +
+                ", boardTitle='" + boardTitle + '\'' +
                 ", boardWriter='" + boardWriter + '\'' +
-                ", boardContents='" + boardContents + '\'' +
-                ", boardPass='" + boardPass + '\'' +
+                ", boardHits=" + boardHits +
                 '}';
     }
 }

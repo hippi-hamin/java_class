@@ -14,11 +14,11 @@ public class BoardService {
         System.out.print("글의 제목 : ");
         String boardTitle = sc.nextLine();
         System.out.print("작성자 : ");
-        String boardWriter = sc.next();
-        System.out.print("내용 : ");
+        String boardWriter = sc.nextLine();
+        System.out.println("내용 : ");
         String boardContents = sc.nextLine();
-        System.out.println("비밀번호 : ");
-        String boardPass = sc.next();
+        System.out.print("비밀번호 : ");
+        String boardPass = sc.nextLine();
         // boardDTO에 스캐너로 받은 정보를 넘겨주는 생성자 선언
         BoardDTO boardDTO = new BoardDTO(boardTitle, boardWriter, boardContents, boardPass);
         // boardRepository를 호출하면서 정보 넘겨준 후 result 받겠다.
@@ -44,8 +44,43 @@ public class BoardService {
         BoardDTO boardDTO = boardRepository.findById(id);
         if (boardDTO != null) {
             System.out.println("조회하신 글의 정보입니다 : " + boardDTO);
+            System.out.println("내용 : " + boardDTO.getBoardContents());
         } else {
             System.out.println("조회결과가 없습니다.");
+        }
+    }
+
+    public void update() {
+        boolean run = true;
+        // 수정할 id를 입력받음
+        // 해당 id 도서가 있다면 수정할 가격을 입력받고 수정 처리
+        // 없으면 없다고 출력
+        System.out.print("수정할 글 번호 : ");
+        Long id = sc.nextLong();sc.nextLine();
+        // 위에서 받은 id 값을 갖는 책이 있는 지 찾는 문장
+        BoardDTO boardDTO = boardRepository.findById(id);
+        if (boardDTO != null) {
+            //조회결과 있음
+            System.out.println("해당 글번호의 글이 존재합니다.");
+            while (run) {
+                System.out.print("비밀번호를 입력하세요 : ");
+                String boardPass = sc.nextLine();
+                if (boardPass.equals(boardDTO.getBoardPass())) {
+                    System.out.print("수정할 제목 : ");
+                    String updateTitle = sc.nextLine();
+                    System.out.println("수정할 내용 : ");
+                    String updateContents = sc.nextLine();
+                    boolean updateResult = boardRepository.update(id, updateTitle, updateContents);
+                    if (updateResult) {
+                        System.out.println("수정되었습니다.");
+                        run = false;
+                    } else {
+                        System.out.println("수정 실패하였습니다.");
+                    }
+                } else {
+                    System.out.println("비밀번호가 틀렸습니다.");
+                }
+            }
         }
     }
 }

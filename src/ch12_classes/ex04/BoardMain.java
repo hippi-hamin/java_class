@@ -26,7 +26,7 @@ public class BoardMain {
                 boardService.findById();
             } else if (selectNo == 4) {
                 // 호출하는 문장 작성
-
+                boardService.update();
             } else if (selectNo == 5) {
                 // 호출하는 문장 작성
 
