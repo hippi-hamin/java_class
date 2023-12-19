@@ -21,4 +21,14 @@ public class BoardRepository {
     public List<BoardDTO> list() {
         return boardDTOList;
     }
+
+    public BoardDTO findById(Long id) {
+        BoardDTO boardDTO = null;
+        for (BoardDTO boardDTO1 : boardDTOList) {
+            if (id.equals(boardDTO1.getId())){
+                boardDTO = boardDTO1;
+            }
+        }
+        return boardDTO;
+    }
 }

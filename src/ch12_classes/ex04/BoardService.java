@@ -37,4 +37,15 @@ public class BoardService {
             System.out.println(boardDTO);
         }
     }
+
+    public void findById() {
+        System.out.print("조회 글번호 : ");
+        Long id = sc.nextLong();
+        BoardDTO boardDTO = boardRepository.findById(id);
+        if (boardDTO != null) {
+            System.out.println("조회하신 글의 정보입니다 : " + boardDTO);
+        } else {
+            System.out.println("조회결과가 없습니다.");
+        }
+    }
 }
