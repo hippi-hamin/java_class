@@ -1,4 +1,4 @@
-package ch12_classes.ex04;
+package ch12_classes.ex04_board;
 
 import java.util.Scanner;
 

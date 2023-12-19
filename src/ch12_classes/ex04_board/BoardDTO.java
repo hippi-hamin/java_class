@@ -1,4 +1,7 @@
-package ch12_classes.ex04;
+package ch12_classes.ex04_board;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class BoardDTO {
     //필드
@@ -11,6 +14,7 @@ public class BoardDTO {
     // int & long 은 초기값 0
     // Long은 초기값 null
     private int boardHits; // 조회수
+    private String createdAt;
 
 
     // getter/setter
@@ -64,6 +68,14 @@ public class BoardDTO {
         this.boardHits++;
     }
 
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
     // 기본생성자
     public BoardDTO(){
     }
@@ -77,16 +89,23 @@ public class BoardDTO {
         this.boardWriter = boardWriter;
         this.boardContents = boardContents;
         this.boardPass = boardPass;
+        this.boardHits = 0;
+        this.createdAt = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
 
     // toString
+
     @Override
     public String toString() {
         return "BoardDTO{" +
                 "id=" + id +
                 ", boardTitle='" + boardTitle + '\'' +
                 ", boardWriter='" + boardWriter + '\'' +
+                ", boardContents='" + boardContents + '\'' +
+                ", boardPass='" + boardPass + '\'' +
                 ", boardHits=" + boardHits +
+                ", createdAt='" + createdAt + '\'' +
                 '}';
     }
 }
+

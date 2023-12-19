@@ -1,6 +1,4 @@
-package ch12_classes.ex04;
-
-import ch12_classes.ex02.BookDTO;
+package ch12_classes.ex04_board;
 
 import java.util.ArrayList;
 import java.util.List;

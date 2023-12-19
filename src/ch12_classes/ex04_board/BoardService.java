@@ -1,8 +1,4 @@
-package ch12_classes.ex04;
-
-import ch10_class.ex11.Board;
-import ch12_classes.ex02.BookDTO;
-import ch12_classes.ex03.MemberDTO;
+package ch12_classes.ex04_board;
 
 import java.util.List;
 import java.util.Scanner;
@@ -34,16 +30,14 @@ public class BoardService {
 
     public void list() {
         List<BoardDTO> boardDTOList = boardRepository.list();
-        System.out.println("id\t" + "title\t" + "writer\t" + "hits\t");
-        for (BoardDTO boardDTO : boardDTOList) {
-            System.out.println(boardDTO.getId() + "\t" + boardDTO.getBoardTitle() + "\t" +
-                    boardDTO.getBoardWriter() + "\t" + boardDTO.getBoardHits() + "\t");
-        }
+        listPrint(boardDTOList);
     }
+
 
     public void findById() {
         System.out.print("조회 글번호 : ");
-        Long id = sc.nextLong();sc.nextLine();
+        Long id = sc.nextLong();
+        sc.nextLine();
         BoardDTO boardDTO = boardRepository.findById(id);
         if (boardDTO != null) {
             System.out.println("조회하신 글의 정보입니다 : " + boardDTO);
@@ -92,7 +86,8 @@ public class BoardService {
     public void delete() {
         boolean run = true;
         System.out.println("삭제할 글번호 : ");
-        Long id = sc.nextLong();sc.nextLine();
+        Long id = sc.nextLong();
+        sc.nextLine();
         BoardDTO boardDTO = boardRepository.findById(id);
         while (run) {
             System.out.print("삭제를 희망하시면 비밀번호를 입력하세요 : ");
@@ -115,14 +110,24 @@ public class BoardService {
         System.out.print("검색할 제목 : ");
         String boardTitle = sc.nextLine();
         // 검색 결과가 여러 개 일 수 있기 때문에 List 메서드를 사용해 줌.
-        List<BoardDTO> boardDTOList = boardRepository.search(boardTitle);
-        if (boardDTOList.size() > 0) {
-            for (BoardDTO boardDTO : boardDTOList) {
-                System.out.println("boardDTO = " + boardDTO);
-            }
+        List<BoardDTO> searchList = boardRepository.search(boardTitle);
+        if (searchList.size() > 0) {
+            System.out.println("검색 결과");
+            listPrint(searchList);
         } else {
             // boardDTOList.size() == 0 => 결과가 없다
             System.out.println("검색 결과가 없습니다!");
+        }
+    }
+
+    // 목록 출력 전용 메서드
+    // list, search 메서드로 부터 list 데이터를 전달 받아서 출력을 하는 메서드
+    private void listPrint(List<BoardDTO> boardDTOList) {
+        System.out.println("id\t" + "title\t" + "writer\t" + "hits\t" + "date\t");
+        for (BoardDTO boardDTO : boardDTOList) {
+            System.out.println(boardDTO.getId() + "\t" + boardDTO.getBoardTitle() + "\t" +
+                    boardDTO.getBoardWriter() + "\t" + boardDTO.getBoardHits() + "\t" +
+                    boardDTO.getCreatedAt() + "\t");
         }
     }
 }
