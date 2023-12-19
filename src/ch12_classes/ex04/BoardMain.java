@@ -20,7 +20,7 @@ public class BoardMain {
                 boardService.write();
             } else if (selectNo == 2) {
                 // 호출하는 문장 작성
-
+                boardService.list();
             } else if (selectNo == 3) {
                 // 호출하는 문장 작성
 

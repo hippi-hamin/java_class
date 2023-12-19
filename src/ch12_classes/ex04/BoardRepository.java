@@ -17,4 +17,8 @@ public class BoardRepository {
     public static boolean write(BoardDTO boardDTO) {
         return boardDTOList.add(boardDTO);
     }
+
+    public List<BoardDTO> list() {
+        return boardDTOList;
+    }
 }
