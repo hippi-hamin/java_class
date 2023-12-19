@@ -17,7 +17,7 @@ public class BoardMain {
             selectNo = sc.nextInt();
             if (selectNo == 1) {
                 // 호출하는 문장 작성
-
+                boardService.write();
             } else if (selectNo == 2) {
                 // 호출하는 문장 작성
 
