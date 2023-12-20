@@ -22,4 +22,15 @@ public class BankRepository {
         }
         return result;
     }
+
+    public boolean balance(String accountNumber) {
+        boolean result = false;
+        for (int i = 0; i < clientDTOList.size(); i++) {
+            if (accountNumber.equals(clientDTOList.get(i).getAccountNumber())){
+                // Service에서 넘겨 받은 계좌가 리스트에 있는 경우
+                result = true;
+            }
+        }
+        return result;
+    }
 }

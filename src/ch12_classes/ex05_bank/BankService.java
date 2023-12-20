@@ -40,6 +40,22 @@ public class BankService {
         } else {
             System.out.println("고객등록 실패");
         }
+
+    }
+
+    public void balance() {
+        ClientDTO clientDTO = null;
+        System.out.println("계좌번호를 입력해주세요 : ");
+        String accountNumber = sc.next();
+        boolean checkResult = bankRepository.balance(accountNumber);
+        if (checkResult) {
+            if (clientDTO.getBalance() == 0) {
+                System.out.println("잔액이 없습니다.");
+            } else {
+                System.out.println(clientDTO.getBalance());
+            }
+        } else {
+            System.out.println("없는 계좌번호입니다.");
+        }
     }
 }
-
