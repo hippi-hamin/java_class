@@ -53,7 +53,7 @@ public class BankService {
             if (checkResult.getBalance() == 0) {
                 System.out.println("잔액이 없습니다.");
             } else {
-                System.out.println("현재 잔액은 " + checkResult.getBalance() + "원 입니다.");
+                System.out.println(checkResult.getClientName() + "님의 현재 잔액은 " + checkResult.getBalance() + "원 입니다.");
             }
         } else {
             System.out.println("없는 계좌번호 입니다.");
@@ -69,7 +69,10 @@ public class BankService {
             long deposit = sc.nextLong();
             boolean depositResult = bankRepository.deposit(accountNumber, deposit);
             if (depositResult) {
-                System.out.println("현재 잔액은 " + checkResult.getBalance() + "원 입니다.");
+                System.out.println("입급에 성공하였습니다.");
+                System.out.println(checkResult.getClientName() + "님의 현재 잔액은 " + checkResult.getBalance() + "원 입니다.");
+                AccountDTO accountDTO = new AccountDTO(accountNumber, deposit, 0, );
+
             } else {
                 System.out.println("입금에 실패하였습니다.");
             }
@@ -98,7 +101,7 @@ public class BankService {
                         run = false;
                     } else {
                         System.out.println("잔액이 부족합니다.");
-                        System.out.println("현재 잔액은 " + checkResult.getBalance() + "원 입니다.");
+                        System.out.println(checkResult.getClientName() + "님의 현재 잔액은 " + checkResult.getBalance() + "원 입니다.");
                         run = false;
                     }
                 } else {
@@ -107,6 +110,34 @@ public class BankService {
             }
         } else {
             System.out.println("없는 계좌번호 입니다.");
+        }
+    }
+
+    public void detail() {
+        boolean run = true;
+
+        System.out.println("-----------");
+        System.out.println("계좌번호 입력");
+        System.out.println("-----------");
+        String accountNumber = sc.next();
+        while (run) {
+            ClientDTO accountNum1 = bankRepository.accountCheck(accountNumber);
+            if (accountNum1 != null) {
+                System.out.println("------------------------------------------------------");
+                System.out.println("1. 전체 내역 조회 | 2. 입금 내역 조회 | 3. 출금 내역 조회 | 4. 종료");
+                System.out.println("------------------------------------------------------");
+                int selectNum = sc.nextInt();
+
+                if (selectNum == 1) {
+                    bankRepository.List(accountNumber);
+                } else if (selectNum == 2) {
+                    bankRepository.depositDetail(accountNumber);
+                } else if (selectNum == 3) {
+                    bankRepository.withDrawDetail(accountNumber);
+                } else if (selectNum == 4) {
+                    run = false;
+                }
+            }
         }
     }
 }

@@ -1,13 +1,11 @@
 package ch12_classes.ex05_bank;
 
-import ch12_classes.ex03.MemberDTO;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class BankRepository {
     private static List<ClientDTO> clientDTOList = new ArrayList<>();
-    private static List<AccountDTO> accountDTOList = new ArrayList<>();
+    private static List<AccountDTO> bankingList = new ArrayList<>();
 
     public boolean save(ClientDTO clientDTO) {
         return clientDTOList.add(clientDTO);
@@ -20,6 +18,7 @@ public class BankRepository {
                 // 중복되는 이메일이 있는 경우 => 결과를 false로 주기.
                 result = clientDTOList.get(i);
                 return result;
+
             }
         }
         return null;
@@ -70,5 +69,29 @@ public class BankRepository {
             }
         }
         return result;
+    }
+
+    public void depositDetail(String accountNum) {
+        for (int i = 0; i < bankingList.size(); i++) {
+            if (accountNum.equals(bankingList.get(i).getAccountNumber())) {
+                System.out.println("입금 : " + bankingList.get(i).getDeposit() + " " + bankingList.get(i).getBankingAt());
+            }
+        }
+    }
+
+    public void withDrawDetail(String accountNum) {
+        for (int i = 0; i < bankingList.size(); i++) {
+            if (accountNum.equals(bankingList.get(i).getAccountNumber())) {
+                System.out.println("출금 : " + bankingList.get(i).getWithdraw() + " " + bankingList.get(i).getBankingAt());
+            }
+        }
+    }
+
+    public void List(String accountNum) {
+        for (int i = 0; i < bankingList.size(); i++) {
+            if (accountNum.equals(bankingList.get(i).getAccountNumber())) {
+                System.out.println(bankingList.get(i));
+            }
+        }
     }
 }

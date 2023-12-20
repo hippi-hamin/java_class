@@ -1,7 +1,9 @@
 package ch12_classes.ex05_bank;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class AccountDTO {
-    ClientDTO clientDTO = new ClientDTO();
     // 필드
     Long id;
     String accountNumber;
@@ -55,13 +57,24 @@ public class AccountDTO {
     // 기본생성자
     public AccountDTO(){}
     // 매개변수 갖는 생성자
-
     private static Long idvalue = 1L;
-    public AccountDTO(Long id, String accountNumber, long deposit, long withdraw, String bankingAt) {
+    public AccountDTO(String accountNumber, long deposit, long withdraw, String bankingAt) {
         this.id = idvalue++;
         this.accountNumber = accountNumber;
         this.deposit = deposit;
         this.withdraw = withdraw;
-        this.bankingAt = bankingAt;
+        this.bankingAt = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+    }
+    // toString
+
+    @Override
+    public String toString() {
+        return "AccountDTO{" +
+                ", id=" + id +
+                ", accountNumber='" + accountNumber + '\'' +
+                ", deposit=" + deposit +
+                ", withdraw=" + withdraw +
+                ", bankingAt='" + bankingAt + '\'' +
+                '}';
     }
 }

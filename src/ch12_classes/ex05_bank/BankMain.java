@@ -30,7 +30,7 @@ public class BankMain {
                 bankService.withdraw();
             } else if (selectNo == 5) {
                 // 호출하는 문장 작성
-
+                bankService.detail();
             } else if (selectNo == 6) {
                 // 호출하는 문장 작성
 
