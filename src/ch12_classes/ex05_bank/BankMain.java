@@ -18,7 +18,7 @@ public class BankMain {
             sc.nextLine();
             if (selectNo == 1) {
                 // 호출하는 문장 작성
-
+                bankService.save();
             } else if (selectNo == 2) {
                 // 호출하는 문장 작성
 
