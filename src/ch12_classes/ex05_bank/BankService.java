@@ -71,7 +71,7 @@ public class BankService {
             if (depositResult) {
                 System.out.println("입급에 성공하였습니다.");
                 System.out.println(checkResult.getClientName() + "님의 현재 잔액은 " + checkResult.getBalance() + "원 입니다.");
-                AccountDTO accountDTO = new AccountDTO(accountNumber, deposit, 0, );
+                // AccountDTO accountDTO = new AccountDTO(accountNumber, deposit, 0, );
 
             } else {
                 System.out.println("입금에 실패하였습니다.");
