@@ -24,10 +24,10 @@ public class BankMain {
                 bankService.balance();
             } else if (selectNo == 3) {
                 // 호출하는 문장 작성
-
+                bankService.deposit();
             } else if (selectNo == 4) {
                 // 호출하는 문장 작성
-
+                bankService.withdraw();
             } else if (selectNo == 5) {
                 // 호출하는 문장 작성
 

@@ -92,5 +92,4 @@ public class BoardRepository {
         }
         return searchList;
     }
-
 }
