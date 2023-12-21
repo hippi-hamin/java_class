@@ -3,6 +3,7 @@ package ch12_classes.ex06_memberboard.service;
 import ch12_classes.ex06_memberboard.dto.MemberDTO;
 import ch12_classes.ex06_memberboard.repository.MemberRepository;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class MemberService {
@@ -55,6 +56,13 @@ public class MemberService {
             loginEmail = memberEmail;
         } else {
             System.out.println("로그인 실패");
+        }
+    }
+
+    public void findAll() {
+        List<MemberDTO>memberDTOList = memberRepository.findAll();
+        for (MemberDTO memberDTO : memberDTOList) {
+            System.out.println(memberDTO);
         }
     }
 }

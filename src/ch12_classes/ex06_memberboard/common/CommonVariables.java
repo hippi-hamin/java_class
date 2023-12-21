@@ -16,14 +16,14 @@ public class CommonVariables {
             System.out.println("-----------------------------------------------------------------------------------------");
             System.out.println("1.회원가입 | 2.로그인 | 3.회원목록 | 4.회원수정 | 5.회원탈퇴 | 6.로그아웃 | 7.게시판메뉴 | 0.종료");
             System.out.println("-----------------------------------------------------------------------------------------");
-            System.out.print("선택>  ");
+            System.out.print("선택> ");
             selectNo = sc.nextInt();
             if (selectNo == 1) {
                 memberService.save();
             } else if (selectNo == 2) {
                 memberService.login();
             } else if (selectNo == 3) {
-
+                memberService.findAll();
             } else if (selectNo == 4) {
 
             } else if (selectNo == 5) {
