@@ -67,13 +67,13 @@ public class MemberDTO {
     }
 
     // 필드를 매개변수로 갖는 생성자
-    public MemberDTO(Long id, String memberEmail, String memberPassword, String memberName, String memberMobile, String memberCreatedAt) {
+    public MemberDTO(Long id, String memberEmail, String memberPassword, String memberName, String memberMobile) {
         this.id = id;
         this.memberEmail = memberEmail;
         this.memberPassword = memberPassword;
         this.memberName = memberName;
         this.memberMobile = memberMobile;
-        this.memberCreatedAt = memberCreatedAt;
+        this.memberCreatedAt = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
 
     // toString
