@@ -91,11 +91,20 @@ public class MemberRepository {
     }
 
 
-
-
-
-
-
+    public boolean delete(String loginEmail, String memberPassword) {
+        boolean result = false;
+        for (int i = 0; i < memberDTOList.size(); i++) {
+            // logingEmail과 같은 값 찾기.
+            if (loginEmail.equals(memberDTOList.get(i).getMemberEmail())) {
+                // 이메일을 찾은 후 그 이메일의 비밀번호와 같은 비밀번호인 지 찾기.
+                if (memberPassword.equals(memberDTOList.get(i).getMemberPassword())) {
+                    memberDTOList.remove(i); // 삭제하는 기능
+                    result = true; // 맞으면 true
+                }
+            }
+        }
+        return result;
+    }
 }
 
 

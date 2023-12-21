@@ -47,17 +47,21 @@ public class MemberService {
     private static String loginEmail = null;
 
     public void login() {
-        System.out.print("이메일 : ");
-        String memberEmail = sc.next();
-        System.out.print("비밀번호 : ");
-        String memberPassword = sc.next();
-        MemberDTO memberDTO = memberRepository.login(memberEmail, memberPassword);
-        if (memberDTO != null) {
-            // 조회결과 있음
-            System.out.println("로그인 성공");
-            loginEmail = memberEmail;
+        if (loginEmail != null) {
+            System.out.println("이미 로그인 되어있습니다.");
         } else {
-            System.out.println("로그인 실패");
+            System.out.print("이메일 : ");
+            String memberEmail = sc.next();
+            System.out.print("비밀번호 : ");
+            String memberPassword = sc.next();
+            MemberDTO memberDTO = memberRepository.login(memberEmail, memberPassword);
+            if (memberDTO != null) {
+                // 조회결과 있음
+                System.out.println("로그인 성공");
+                loginEmail = memberEmail;
+            } else {
+                System.out.println("로그인 실패");
+            }
         }
     }
 
@@ -137,6 +141,23 @@ public class MemberService {
         } else {
             System.out.println("해당 기능은 로그인 후 사용가능합니다.");
         }
+    }
+
+    public void delete() {
+        if (loginEmail != null) {
+            System.out.print("회원 탈퇴를 원하시면 비밀번호를 입력하세요 : ");
+            String memberPassword = sc.next();
+            boolean passwordResult = memberRepository.delete(loginEmail, memberPassword);
+            if (passwordResult) {
+                System.out.println("회원 탈퇴 되었습니다.");
+                System.out.println("그동안 감사했습니다.");
+            } else {
+                System.out.println("비밀번호가 틀렸습니다.");
+            }
+        } else {
+            System.out.println("해당 기능은 로그인 후 사용가능합니다.");
+        }
+
     }
 }
 
