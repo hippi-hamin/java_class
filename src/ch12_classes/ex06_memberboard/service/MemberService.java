@@ -15,6 +15,7 @@ public class MemberService {
         boolean checkResult = false;
         String memberEmail = null;
         do {
+            System.out.println("회원가입 메뉴");
             System.out.print("사용할 이메일 : ");
             memberEmail = sc.next();
             // checkResult가 true => 사용가능(반복문 종료), checkResult가 false => 사용불가(다시 이메일입력)
@@ -57,8 +58,9 @@ public class MemberService {
             MemberDTO memberDTO = memberRepository.login(memberEmail, memberPassword);
             if (memberDTO != null) {
                 // 조회결과 있음
-                System.out.println("로그인 성공");
                 loginEmail = memberEmail;
+                System.out.println("로그인 성공");
+                System.out.println(loginEmail + "님 환영합니다!");
             } else {
                 System.out.println("로그인 실패");
             }
@@ -161,8 +163,21 @@ public class MemberService {
     }
 
     public void logout() {
-        loginEmail = null;
-        System.out.println("로그아웃 되었습니다.");
+        if (loginEmail != null) {
+            loginEmail = null;
+            System.out.println("로그아웃 되었습니다.");
+        } else {
+            System.out.println("로그아웃 상태입니다.");
+        }
     }
-}
+
+        public boolean loginResult () {
+            boolean result = false;
+            if (loginEmail != null) {
+                result = true;
+            }
+            return result;
+        }
+    }
+
 
