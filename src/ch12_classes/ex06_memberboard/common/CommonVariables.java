@@ -29,7 +29,7 @@ public class CommonVariables {
             } else if (selectNo == 5) {
                 memberService.delete();
             } else if (selectNo == 6) {
-
+                memberService.logout();
             } else if (selectNo == 7) {
 
             } else if (selectNo == 0) {
