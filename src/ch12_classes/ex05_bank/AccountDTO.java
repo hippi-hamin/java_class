@@ -4,15 +4,11 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class AccountDTO {
-    // 필드
-    Long id;
-    String accountNumber;
-    long deposit;
-    long withdraw;
-    String bankingAt;
-
-    // getter/setter
-
+    private Long id;
+    private String accountNumber;
+    private long deposit;
+    private long withdraw;
+    private String bankingAt;
 
     public Long getId() {
         return id;
@@ -54,23 +50,23 @@ public class AccountDTO {
         this.bankingAt = bankingAt;
     }
 
-    // 기본생성자
-    public AccountDTO(){}
-    // 매개변수 갖는 생성자
-    private static Long idvalue = 1L;
-    public AccountDTO(String accountNumber, long deposit, long withdraw, String bankingAt) {
-        this.id = idvalue++;
+    private static Long idValue = 1L;
+
+    public AccountDTO() {
+    }
+
+    public AccountDTO(String accountNumber, long deposit, long withdraw) {
+        this.id = idValue++;
         this.accountNumber = accountNumber;
         this.deposit = deposit;
         this.withdraw = withdraw;
         this.bankingAt = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
-    // toString
 
     @Override
     public String toString() {
         return "AccountDTO{" +
-                ", id=" + id +
+                "id=" + id +
                 ", accountNumber='" + accountNumber + '\'' +
                 ", deposit=" + deposit +
                 ", withdraw=" + withdraw +

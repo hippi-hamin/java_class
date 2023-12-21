@@ -5,92 +5,85 @@ import java.util.List;
 
 public class BankRepository {
     private static List<ClientDTO> clientDTOList = new ArrayList<>();
-    private static List<AccountDTO> bankingList = new ArrayList<>();
-
-    public boolean save(ClientDTO clientDTO) {
-        return clientDTOList.add(clientDTO);
-    }
+    private static List<AccountDTO> accountDTOList = new ArrayList<>();
 
     public ClientDTO accountCheck(String accountNumber) {
-        ClientDTO result = null;
-        for (int i = 0; i < clientDTOList.size(); i++) {
-            if (accountNumber.equals(clientDTOList.get(i).getAccountNumber())) {
-                // 중복되는 이메일이 있는 경우 => 결과를 false로 주기.
-                result = clientDTOList.get(i);
-                return result;
-
+        for (ClientDTO clientDTO : clientDTOList) {
+            if (accountNumber.equals(clientDTO.getAccountNumber())) {
+                return clientDTO;
             }
         }
         return null;
     }
 
-    public boolean checkPass(String clientPass) {
-        boolean result = false;
-        for (int i = 0; i < clientDTOList.size(); i++) {
-            if (clientPass.equals(clientDTOList.get(i).getClientPass())) {
-                // Service에서 넘겨 받은 계좌가 리스트에 있는 경우
-                result = true;
-            }
-        }
-        return result;
+    public boolean save(ClientDTO clientDTO) {
+        return clientDTOList.add(clientDTO);
     }
 
-
-    public boolean deposit(String accountNumber, long deposit) {
-        boolean result = false;
-        for (int i = 0; i < clientDTOList.size(); i++) {
-            // clientDTOList.get(i) 인덱스에서 accountNumber와 같은 accountNumber 정보를 찾는 문장
-            if (accountNumber.equals(clientDTOList.get(i).getAccountNumber())) {
-                // clientDTOList.get(i) = 해당 인덱스에 접근 하여
-                //  = 해당 데이터에 member 값을 수정.
-                long result1 = clientDTOList.get(i).getBalance();
-                result1 = result1 + deposit;
-                clientDTOList.get(i).setBalance(result1);
-                result = true;
+    public ClientDTO checkBalance(String accountNumber) {
+        for (ClientDTO clientDTO : clientDTOList) {
+            if (accountNumber.equals(clientDTO.getAccountNumber())) {
+                return clientDTO;
             }
         }
-        return result;
+        return null;
     }
 
+    public boolean deposit(String accountNumber, long money) {
+        for (ClientDTO clientDTO : clientDTOList) {
+            if (accountNumber.equals(clientDTO.getAccountNumber())) {
+                long balance = clientDTO.getBalance();
+                balance = balance + money;
+                clientDTO.setBalance(balance);
+                AccountDTO accountDTO = new AccountDTO(accountNumber, money, 0);
+                accountDTOList.add(accountDTO);
+                return true;
+            }
+        }
+        return false;
+    }
 
-    public boolean withdraw(String accountNumber, long withdraw) {
-        boolean result = false;
-        for (int i = 0; i < clientDTOList.size(); i++) {
-            // clientDTOList.get(i) 인덱스에서 accountNumber과 같은 accountNumber 정보를 찾는 문장
-            if (accountNumber.equals(clientDTOList.get(i).getAccountNumber())) {
-                if (withdraw <= clientDTOList.get(i).getBalance()) {
-                    // clientDTOList.get(i) = 해당 인덱스에 접근 하여
-                    // setBalance(getsetMemberMobile(memberMobile) = 해당 데이터에 member 값을 수정.
-                    clientDTOList.get(i).setBalance(clientDTOList.get(i).getBalance() - withdraw);
-                    result = true;
-                } else {
-                    result = false;
+    public boolean withdraw(String accountNumber, long money) {
+        for (ClientDTO clientDTO : clientDTOList) {
+            if (accountNumber.equals(clientDTO.getAccountNumber())) {
+                long balance = clientDTO.getBalance();
+                if (money > balance) {
+                    return false;
                 }
+                balance = balance - money;
+                clientDTO.setBalance(balance);
+                AccountDTO accountDTO = new AccountDTO(accountNumber, 0, money);
+                accountDTOList.add(accountDTO);
+                return true;
             }
         }
-        return result;
+        return false;
     }
 
-    public void depositDetail(String accountNum) {
-        for (int i = 0; i < bankingList.size(); i++) {
-            if (accountNum.equals(bankingList.get(i).getAccountNumber())) {
-                System.out.println("입금 : " + bankingList.get(i).getDeposit() + " " + bankingList.get(i).getBankingAt());
+    public List<AccountDTO> bankingList(String accountNumber) {
+        List<AccountDTO> bankingList = new ArrayList<>();
+        for (AccountDTO accountDTO : accountDTOList) {
+            if (accountNumber.equals(accountDTO.getAccountNumber())) {
+                bankingList.add(accountDTO);
             }
         }
+        return bankingList;
     }
 
-    public void withDrawDetail(String accountNum) {
-        for (int i = 0; i < bankingList.size(); i++) {
-            if (accountNum.equals(bankingList.get(i).getAccountNumber())) {
-                System.out.println("출금 : " + bankingList.get(i).getWithdraw() + " " + bankingList.get(i).getBankingAt());
-            }
-        }
-    }
-
-    public void List(String accountNum) {
-        for (int i = 0; i < bankingList.size(); i++) {
-            if (accountNum.equals(bankingList.get(i).getAccountNumber())) {
-                System.out.println(bankingList.get(i));
+    public void transfer(String accountNumberFrom, String accountNumberTo, long money) {
+        for (int i = 0; i < clientDTOList.size(); i++) {
+            if (accountNumberFrom.equals(clientDTOList.get(i).getAccountNumber())) {
+                long balance = clientDTOList.get(i).getBalance();
+                balance = balance - money;
+                clientDTOList.get(i).setBalance(balance);
+                AccountDTO accountDTO = new AccountDTO(accountNumberFrom, 0, money);
+                accountDTOList.add(accountDTO);
+            } else if (accountNumberTo.equals(clientDTOList.get(i).getAccountNumber())) {
+                long balance = clientDTOList.get(i).getBalance();
+                balance = balance + money;
+                clientDTOList.get(i).setBalance(balance);
+                AccountDTO accountDTO = new AccountDTO(accountNumberTo, money, 0);
+                accountDTOList.add(accountDTO);
             }
         }
     }

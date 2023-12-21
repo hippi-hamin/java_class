@@ -4,16 +4,12 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class ClientDTO {
-    // 필드
-    private Long id; // id
-    private String clientName; // 고객이름
-    private String accountNumber; // 계좌번호
-    private String clientPass; // 비밀번호
-    private String clientCreatedAt; // 가입일자
-    private long balance; // 잔고
-
-    // getter/setter
-
+    private Long id;
+    private String clientName;
+    private String accountNumber;
+    private String clientPass;
+    private String clientCreatedAt;
+    private long balance = 0;
 
     public Long getId() {
         return id;
@@ -63,22 +59,20 @@ public class ClientDTO {
         this.balance = balance;
     }
 
-    // 기본생성자
+
+    private static Long idValue = 1L;
+
     public ClientDTO() {
     }
 
-    // 매개변수 갖는 생성자
-    public static Long idValue = 1L;
-    public ClientDTO(String clientName, String accountNumber, String clientPass, long balance) {
+    public ClientDTO(String clientName, String accountNumber, String clientPass) {
         this.id = idValue++;
         this.clientName = clientName;
         this.accountNumber = accountNumber;
         this.clientPass = clientPass;
         this.clientCreatedAt = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-        this.balance = balance;
     }
 
-    // toString
     @Override
     public String toString() {
         return "ClientDTO{" +
