@@ -1,7 +1,7 @@
 package ch12_classes.ex06_memberboard.service;
 
-import ch12_classes.ex03.MemberDTO;
-import ch12_classes.ex03.MemberRepository;
+import ch12_classes.ex06_memberboard.dto.MemberDTO;
+import ch12_classes.ex06_memberboard.repository.MemberRepository;
 
 import java.util.Scanner;
 
@@ -40,6 +40,21 @@ public class MemberService {
             System.out.println("회원가입 성공");
         } else {
             System.out.println("회원가입 실패");
+        }
+    }
+    private static String loginEmail = null;
+    public void login() {
+        System.out.print("이메일 : ");
+        String memberEmail = sc.next();
+        System.out.print("비밀번호 : ");
+        String memberPassword = sc.next();
+        MemberDTO memberDTO = memberRepository.login(memberEmail, memberPassword);
+        if (memberDTO != null) {
+            // 조회결과 있음
+            System.out.println("로그인 성공");
+            loginEmail = memberEmail;
+        } else {
+            System.out.println("로그인 실패");
         }
     }
 }

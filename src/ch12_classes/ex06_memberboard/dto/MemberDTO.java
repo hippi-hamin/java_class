@@ -67,7 +67,7 @@ public class MemberDTO {
     }
 
     // 필드를 매개변수로 갖는 생성자
-    public MemberDTO(Long id, String memberEmail, String memberPassword, String memberName, String memberMobile) {
+    public MemberDTO(String memberEmail, String memberPassword, String memberName, String memberMobile) {
         this.id = id;
         this.memberEmail = memberEmail;
         this.memberPassword = memberPassword;

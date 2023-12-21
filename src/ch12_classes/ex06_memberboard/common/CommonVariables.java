@@ -21,7 +21,7 @@ public class CommonVariables {
             if (selectNo == 1) {
                 memberService.save();
             } else if (selectNo == 2) {
-
+                memberService.login();
             } else if (selectNo == 3) {
 
             } else if (selectNo == 4) {
