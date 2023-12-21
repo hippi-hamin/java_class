@@ -66,13 +66,14 @@ public class BoardDTO {
     // 기본생성자
     public BoardDTO(){}
 
+    public static Long idValue = 1L;
     // 필드를 매개변수로 갖는 생성자
-    public BoardDTO(Long id, String boardTitle, String boardWriter, String boardContents, int boardHits) {
-        this.id = id;
+    public BoardDTO(String boardTitle, String boardWriter, String boardContents) {
+        this.id = idValue++;
         this.boardTitle = boardTitle;
         this.boardWriter = boardWriter;
         this.boardContents = boardContents;
-        this.boardHits = boardHits;
+        this.boardHits = 0;
         this.boardCreatedAt = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
 

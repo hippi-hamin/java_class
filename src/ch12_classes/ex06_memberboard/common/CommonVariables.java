@@ -39,20 +39,20 @@ public class CommonVariables {
                     System.out.println("1.글작성 | 2.글목록 | 3.글조회 | 4.글수정 | 5.글삭제 | 6.검색 | 99.sample | 0.메인메뉴");
                     System.out.println("-----------------------------------------------------------------------------------------");
                     System.out.print("선택> ");
-                    selectNo = sc.nextInt();
-                    if (selectNo == 1) {
+                    int selectNum = sc.nextInt();
+                    if (selectNum == 1) {
+                        boardService.save();
+                    } else if (selectNum == 2) {
 
-                    } else if (selectNo == 2) {
+                    } else if (selectNum == 3) {
 
-                    } else if (selectNo == 3) {
+                    } else if (selectNum == 4) {
 
-                    } else if (selectNo == 4) {
+                    } else if (selectNum == 5) {
 
-                    } else if (selectNo == 5) {
+                    } else if (selectNum == 6) {
 
-                    } else if (selectNo == 6) {
-
-                    } else if (selectNo == 99) {
+                    } else if (selectNum == 99) {
 
                     }
                 } else {
