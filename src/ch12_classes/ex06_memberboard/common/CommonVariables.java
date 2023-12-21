@@ -25,7 +25,7 @@ public class CommonVariables {
             } else if (selectNo == 3) {
                 memberService.findAll();
             } else if (selectNo == 4) {
-
+                memberService.update();
             } else if (selectNo == 5) {
 
             } else if (selectNo == 6) {
