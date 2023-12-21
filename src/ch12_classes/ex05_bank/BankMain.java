@@ -28,6 +28,7 @@ public class BankMain {
                 bankService.transfer();
             } else if (selectNo == 0) {
                 System.out.println("종료");
+                run = false;
             }
         }
     }
