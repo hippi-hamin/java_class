@@ -11,6 +11,7 @@ public class CommonVariables {
         MemberService memberService = new MemberService();
         BoardService boardService = new BoardService();
         boolean run = true;
+        boolean run2 = true;
 
         int selectNo = 0;
         while (run) {
@@ -34,26 +35,31 @@ public class CommonVariables {
                 memberService.logout();
             } else if (selectNo == 7) {
                 if (memberService.loginResult()){
-                    System.out.println("====== 게시판 ======");
-                    System.out.println("-----------------------------------------------------------------------------------------");
-                    System.out.println("1.글작성 | 2.글목록 | 3.글조회 | 4.글수정 | 5.글삭제 | 6.검색 | 99.sample | 0.메인메뉴");
-                    System.out.println("-----------------------------------------------------------------------------------------");
-                    System.out.print("선택> ");
-                    int selectNum = sc.nextInt();
-                    if (selectNum == 1) {
-                        boardService.save();
-                    } else if (selectNum == 2) {
+                    while (run2) {
+                        System.out.println("====== 게시판 ======");
+                        System.out.println("-----------------------------------------------------------------------------------------");
+                        System.out.println("1.글작성 | 2.글목록 | 3.글조회 | 4.글수정 | 5.글삭제 | 6.검색 | 99.sample | 0.메인메뉴");
+                        System.out.println("-----------------------------------------------------------------------------------------");
+                        System.out.print("선택> ");
+                        selectNo = sc.nextInt();
+                        if (selectNo == 1) {
+                            boardService.save();
+                        } else if (selectNo == 2) {
+                            boardService.findAll();
+                        } else if (selectNo == 3) {
 
-                    } else if (selectNum == 3) {
+                        } else if (selectNo == 4) {
 
-                    } else if (selectNum == 4) {
+                        } else if (selectNo == 5) {
 
-                    } else if (selectNum == 5) {
+                        } else if (selectNo == 6) {
 
-                    } else if (selectNum == 6) {
+                        } else if (selectNo == 99) {
 
-                    } else if (selectNum == 99) {
-
+                        } else if (selectNo == 0) {
+                            System.out.println("메인 메뉴로 돌아갑니다.");
+                            run2 = false;
+                        }
                     }
                 } else {
                     System.out.println("회원 전용 메뉴입니다.");
