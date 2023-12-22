@@ -2,6 +2,7 @@ package ch12_classes.ex06_memberboard.service;
 
 import ch12_classes.ex06_memberboard.common.CommonVariables;
 import ch12_classes.ex06_memberboard.dto.BoardDTO;
+import ch12_classes.ex06_memberboard.dto.CommentDTO;
 import ch12_classes.ex06_memberboard.repository.BoardRepository;
 
 import java.util.List;
@@ -43,6 +44,31 @@ public class BoardService {
         if (result) {
             BoardDTO boardDTO = boardRepository.findById(id);
             System.out.println("boardDTO = " + boardDTO);
+            System.out.println("====== 댓글 =======");
+            List<CommentDTO> commentDTOs = boardRepository.commentList();
+            if (commentDTOs.size() > 0) {
+                for(CommentDTO commentDTO : commentDTOs){
+                    System.out.println(commentDTO);
+                }
+            } else {
+                System.out.println("작성된 댓글이 없습니다.");
+            }
+            System.out.println("댓글을 작성하시려면 1번을 입력해주세요.");
+            System.out.println("메인메뉴로 돌아가시려면 2번을 입력해주세요.");
+            int selectNo = sc.nextInt();sc.nextLine();
+            if (selectNo == 1) {
+                System.out.print("댓글 : ");
+                String commentContents = sc.nextLine();
+                CommentDTO commentDTO = new CommentDTO(id, CommonVariables.loginEmail, commentContents);
+                boolean result1 = boardRepository.comment(commentDTO);
+                if (result1) {
+                    System.out.println("댓글이 성공적으로 작성되었습니다.");
+                } else {
+                    System.out.println("댓글이 작성되지 않았습니다.");
+                }
+            } else if (selectNo == 2) {
+                System.out.println("메인메뉴로 돌아갑니다.");
+            }
         } else {
             System.out.println("요청하신 게시글은 존재하지 않습니다.");
         }

@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
 public class CommentDTO {
     // 필드
     private Long id;
-    private String boardId;
+    private Long boardId;
     private String commentWriter;
     private String commentContents;
     private String commentCreatedAt;
@@ -20,11 +20,11 @@ public class CommentDTO {
         this.id = id;
     }
 
-    public String getBoardId() {
+    public Long getBoardId() {
         return boardId;
     }
 
-    public void setBoardId(String boardId) {
+    public void setBoardId(Long boardId) {
         this.boardId = boardId;
     }
 
@@ -57,9 +57,10 @@ public class CommentDTO {
 
     }
 
+    public static Long idValue = 1L;
     // 필드값을 매개변수로 갖는 생성자
-    public CommentDTO(Long id, String boardId, String commentWriter, String commentContents) {
-        this.id = id;
+    public CommentDTO(Long boardId, String commentWriter, String commentContents) {
+        this.id = idValue++;
         this.boardId = boardId;
         this.commentWriter = commentWriter;
         this.commentContents = commentContents;
