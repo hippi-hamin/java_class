@@ -42,7 +42,6 @@ public class MainController {
                         System.out.println("-----------------------------------------------------------------------------------------");
                         System.out.print("선택> ");
                         selectNo = sc.nextInt();
-                        sc.nextLine();
                         if (selectNo == 1) {
                             boardService.save();
                         } else if (selectNo == 2) {
@@ -54,7 +53,7 @@ public class MainController {
                         } else if (selectNo == 5) {
                             boardService.delete();
                         } else if (selectNo == 6) {
-
+                            boardService.search();
                         } else if (selectNo == 99) {
 
                         } else if (selectNo == 0) {

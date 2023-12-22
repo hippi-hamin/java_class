@@ -100,5 +100,30 @@ public class BoardService {
             }
         }
     }
+
+    public void search() {
+
+        System.out.print("검색할 제목 : ");
+        String boardTitle = sc.nextLine();
+        // 검색 결과가 여러 개 일 수 있기 때문에 List 메서드를 사용해 줌.
+        List<BoardDTO> searchList = boardRepository.search(boardTitle);
+        if (searchList.size() > 0) {
+            System.out.println("검색 결과");
+            listPrint(searchList);
+        } else {
+            // boardDTOList.size() == 0 => 결과가 없다
+            System.out.println("검색 결과가 없습니다!");
+        }
+    }
+
+    private void listPrint(List<BoardDTO> boardDTOList) {
+        System.out.println("id\t" + "title\t" + "writer\t" + "hits\t" + "date\t");
+        for (BoardDTO boardDTO : boardDTOList) {
+            System.out.println(boardDTO.getId() + "\t" + boardDTO.getBoardTitle() + "\t" +
+                    boardDTO.getBoardWriter() + "\t" + boardDTO.getBoardHits() + "\t" +
+                    boardDTO.getBoardCreatedAt() + "\t");
+        }
+    }
 }
+
 
