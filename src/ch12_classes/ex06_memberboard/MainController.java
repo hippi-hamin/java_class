@@ -52,7 +52,7 @@ public class MainController {
                         } else if (selectNo == 4) {
                             boardService.update();
                         } else if (selectNo == 5) {
-
+                            boardService.delete();
                         } else if (selectNo == 6) {
 
                         } else if (selectNo == 99) {

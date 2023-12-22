@@ -76,5 +76,29 @@ public class BoardService {
             }
         }
     }
+
+    public void delete() {
+        // 수정할 id를 입력받음
+        // 해당 id 도서가 있다면 수정할 가격을 입력받고 수정 처리
+        // 없으면 없다고 출력
+        System.out.print("삭제할 글 번호 : ");
+        Long id = sc.nextLong();
+        sc.nextLine();
+        // 위에서 받은 id 값을 갖는 책이 있는 지 찾는 문장
+        BoardDTO boardDTO = boardRepository.findById(id);
+        if (boardDTO != null) {
+            if (boardDTO.getBoardWriter().equals(CommonVariables.loginEmail)) {
+                System.out.println("해당 글번호의 글이 존재합니다.");
+                boolean deleteResult = boardRepository.delete(id);
+                if (deleteResult) {
+                    System.out.println("삭제되었습니다.");
+                } else {
+                    System.out.println("삭제하지 못했습니다.");
+                }
+            } else {
+                System.out.println("글의 작성자가 아닙니다.");
+            }
+        }
+    }
 }
 
