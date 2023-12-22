@@ -175,6 +175,8 @@ public class MemberService {
             boolean result = false;
             if (CommonVariables.loginEmail != null) {
                 result = true;
+            } else {
+                System.out.println("해당 기능은 로그인 후 사용 가능합니다.");
             }
             return result;
         }

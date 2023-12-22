@@ -11,10 +11,10 @@ public class MainController {
         MemberService memberService = new MemberService();
         BoardService boardService = new BoardService();
         boolean run = true;
-        boolean run2 = true;
 
         int selectNo = 0;
         while (run) {
+            boolean run2 = true;
             System.out.println("====== 회원관리 ======");
             System.out.println("-----------------------------------------------------------------------------------------");
             System.out.println("1.회원가입 | 2.로그인 | 3.회원목록 | 4.회원수정 | 5.회원탈퇴 | 6.로그아웃 | 7.게시판메뉴 | 0.종료");
@@ -42,6 +42,7 @@ public class MainController {
                         System.out.println("-----------------------------------------------------------------------------------------");
                         System.out.print("선택> ");
                         selectNo = sc.nextInt();
+                        sc.nextLine();
                         if (selectNo == 1) {
                             boardService.save();
                         } else if (selectNo == 2) {
