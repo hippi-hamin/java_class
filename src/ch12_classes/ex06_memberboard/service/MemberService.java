@@ -1,5 +1,6 @@
 package ch12_classes.ex06_memberboard.service;
 
+import ch12_classes.ex06_memberboard.common.CommonVariables;
 import ch12_classes.ex06_memberboard.dto.MemberDTO;
 import ch12_classes.ex06_memberboard.repository.MemberRepository;
 
@@ -45,10 +46,9 @@ public class MemberService {
         }
     }
 
-    private static String loginEmail = null;
 
-    public void login() {
-        if (loginEmail != null) {
+      public void login() {
+        if (CommonVariables.loginEmail != null) {
             System.out.println("이미 로그인 되어있습니다.");
         } else {
             System.out.print("이메일 : ");
@@ -58,9 +58,9 @@ public class MemberService {
             MemberDTO memberDTO = memberRepository.login(memberEmail, memberPassword);
             if (memberDTO != null) {
                 // 조회결과 있음
-                loginEmail = memberEmail;
+                CommonVariables.loginEmail = memberEmail;
                 System.out.println("로그인 성공");
-                System.out.println(loginEmail + "님 환영합니다!");
+                System.out.println(CommonVariables.loginEmail + "님 환영합니다!");
             } else {
                 System.out.println("로그인 실패");
             }
@@ -76,7 +76,7 @@ public class MemberService {
 
     public void update() {
         // 로그인 되어 있는 경우
-        if (loginEmail != null) {
+        if (CommonVariables.loginEmail != null) {
             boolean run = true;
             int selectNo = 0;
             while (run) {
@@ -88,11 +88,11 @@ public class MemberService {
                 if (selectNo == 1) {
                     System.out.print("현재 비밀번호를 입력하세요 : ");
                     String memberPassword = sc.next();
-                    boolean passwordResult = memberRepository.passwordCheck(loginEmail, memberPassword);
+                    boolean passwordResult = memberRepository.passwordCheck(CommonVariables.loginEmail, memberPassword);
                     if (passwordResult) {
                         System.out.print("변경할 비밀번호를 입력하세요 : ");
                         String updatePassword = sc.next();
-                        boolean updateResult = memberRepository.updatePassword(loginEmail, updatePassword);
+                        boolean updateResult = memberRepository.updatePassword(CommonVariables.loginEmail, updatePassword);
                         if (updateResult) {
                             System.out.println("비밀번호가 변경되었습니다.");
                             run = false;
@@ -105,11 +105,11 @@ public class MemberService {
                 } else if (selectNo == 2) {
                     System.out.print("현재 비밀번호를 입력하세요 : ");
                     String memberPassword = sc.next();
-                    boolean passwordResult = memberRepository.passwordCheck(loginEmail, memberPassword);
+                    boolean passwordResult = memberRepository.passwordCheck(CommonVariables.loginEmail, memberPassword);
                     if (passwordResult) {
                         System.out.print("변경하실 이름을 입력해주세요 : ");
                         String updateName = sc.next();
-                        boolean updateResult = memberRepository.updateName(loginEmail, updateName);
+                        boolean updateResult = memberRepository.updateName(CommonVariables.loginEmail, updateName);
                         if (updateResult) {
                             System.out.println("이름이 변경되었습니다.");
                             run = false;
@@ -122,11 +122,11 @@ public class MemberService {
                 } else if (selectNo == 3) {
                     System.out.print("현재 비밀번호를 입력하세요 : ");
                     String memberPassword = sc.next();
-                    boolean passwordResult = memberRepository.passwordCheck(loginEmail, memberPassword);
+                    boolean passwordResult = memberRepository.passwordCheck(CommonVariables.loginEmail, memberPassword);
                     if (passwordResult) {
                         System.out.print("변경할 전화번호를 입력하세요 : ");
                         String updateMobile = sc.next();
-                        boolean updateResult = memberRepository.updateMobile(loginEmail, updateMobile);
+                        boolean updateResult = memberRepository.updateMobile(CommonVariables.loginEmail, updateMobile);
                         if (updateResult) {
                             System.out.println("전화번호가 변경되었습니다.");
                             run = false;
@@ -146,10 +146,10 @@ public class MemberService {
     }
 
     public void delete() {
-        if (loginEmail != null) {
+        if (CommonVariables.loginEmail != null) {
             System.out.print("회원 탈퇴를 원하시면 비밀번호를 입력하세요 : ");
             String memberPassword = sc.next();
-            boolean passwordResult = memberRepository.delete(loginEmail, memberPassword);
+            boolean passwordResult = memberRepository.delete(CommonVariables.loginEmail, memberPassword);
             if (passwordResult) {
                 System.out.println("회원 탈퇴 되었습니다.");
                 System.out.println("그동안 감사했습니다.");
@@ -163,8 +163,8 @@ public class MemberService {
     }
 
     public void logout() {
-        if (loginEmail != null) {
-            loginEmail = null;
+        if (CommonVariables.loginEmail != null) {
+            CommonVariables.loginEmail = null;
             System.out.println("로그아웃 되었습니다.");
         } else {
             System.out.println("로그아웃 상태입니다.");
@@ -173,7 +173,7 @@ public class MemberService {
 
         public boolean loginResult () {
             boolean result = false;
-            if (loginEmail != null) {
+            if (CommonVariables.loginEmail != null) {
                 result = true;
             }
             return result;
