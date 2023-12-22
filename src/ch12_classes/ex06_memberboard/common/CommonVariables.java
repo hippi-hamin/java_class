@@ -47,7 +47,7 @@ public class CommonVariables {
                         } else if (selectNo == 2) {
                             boardService.findAll();
                         } else if (selectNo == 3) {
-
+                            boardService.findById();
                         } else if (selectNo == 4) {
 
                         } else if (selectNo == 5) {

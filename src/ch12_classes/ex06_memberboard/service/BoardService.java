@@ -35,4 +35,16 @@ public class BoardService {
             + "\t" + boardDTO.getBoardHits() + "\t" + boardDTO.getBoardCreatedAt());
         }
     }
+
+    public void findById() {
+        System.out.print("조회 글번호 : ");
+        Long id = sc.nextLong();
+        boolean result = boardRepository.updateHits(id);
+        if (result) {
+            BoardDTO boardDTO = boardRepository.findById(id);
+            System.out.println("boardDTO = " + boardDTO);
+        } else {
+            System.out.println("요청하신 게시글은 존재하지 않습니다.");
+        }
+    }
 }

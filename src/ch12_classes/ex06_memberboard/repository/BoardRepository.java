@@ -29,4 +29,13 @@ public class BoardRepository {
         }
         return result;
     }
+
+    public BoardDTO findById(Long id) {
+        for (int i = 0; i < boardDTOList.size(); i++) {
+            if (id.equals(boardDTOList.get(i).getId())) {
+                return boardDTOList.get(i);
+            }
+        }
+        return null;
+    }
 }
