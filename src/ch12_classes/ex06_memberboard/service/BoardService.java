@@ -46,7 +46,9 @@ public class BoardService {
             System.out.println("boardDTO = " + boardDTO);
             System.out.println("====== 댓글 =======");
             List<CommentDTO> commentDTOs = boardRepository.commentList();
-            if (commentDTOs.size() > 0) {
+            if (commentDTOs.size() > 0) { // commentDTOs를 != null 이라는 형식으로 쓸 경우 오류가 자주 발생해서
+                                          // commentDTOs.size() > 0 라는 형식을 많이 씀.
+            // 댓글 전체를 표시해야 하기 때문에 for 문을 사용해줌
                 for(CommentDTO commentDTO : commentDTOs){
                     System.out.println(commentDTO);
                 }
@@ -98,6 +100,7 @@ public class BoardService {
                     System.out.println("수정 실패하였습니다.");
                 }
             } else {
+                // 글의 작성자가 아닌 이상 (작성자가 아닌 다른 이메일로 로그인이 되어있는 경우) 수정불가
                 System.out.println("글의 작성자가 아닙니다.");
             }
         }
