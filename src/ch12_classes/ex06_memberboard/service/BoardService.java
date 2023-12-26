@@ -43,13 +43,15 @@ public class BoardService {
     public void findById() {
         System.out.print("조회 글번호 : ");
         Long id = sc.nextLong();
+        // 해당 id에 조회수를 하나 올리기
         boolean result = boardRepository.updateHits(id);
         if (result) {
             BoardDTO boardDTO = boardRepository.findById(id);
+            // 조회하는 게시글에 작성된 댓글 목록만 가져와야 함.
             System.out.println("boardDTO = " + boardDTO);
             System.out.println("====== 댓글 =======");
             List<CommentDTO> commentDTOs = commentRepository.commentList(id);
-            if (commentDTOs.size() > 0) { // commentDTOs를 != null 이라는 형식으로 쓸 경우 오류가 자주 발생해서
+            if (commentDTOs.size() > 0) { // if 안에 조건식으로 commentDTOs를 != null 이라는 형식으로 쓸 경우 오류가 자주 발생해서
                                           // commentDTOs.size() > 0 라는 형식을 많이 씀.
             // 댓글 전체를 표시해야 하기 때문에 for 문을 사용해줌
                 for(CommentDTO commentDTO : commentDTOs){
@@ -88,8 +90,10 @@ public class BoardService {
         sc.nextLine();
         // 위에서 받은 id 값을 갖는 책이 있는 지 찾는 문장
         BoardDTO boardDTO = boardRepository.findById(id);
+        // 게시글이 존재하는가?
         if (boardDTO != null) {
-            if (boardDTO.getBoardWriter().equals(CommonVariables.loginEmail)) {
+            // 로그인한 회원이 작성한 글인가?
+            if (CommonVariables.loginEmail.equals(boardDTO.getBoardWriter())) {
                 // 조회결과 있음
                 System.out.println("해당 글번호의 글이 존재합니다.");
                 System.out.print("수정할 제목 : ");
@@ -102,7 +106,8 @@ public class BoardService {
                 } else {
                     System.out.println("수정 실패하였습니다.");
                 }
-            } else {
+            // 게시글은 있는데 작성자가 아닌 경우
+            } else if (!CommonVariables.loginEmail.equals(boardDTO.getBoardWriter())){
                 // 글의 작성자가 아닌 이상 (작성자가 아닌 다른 이메일로 로그인이 되어있는 경우) 수정불가
                 System.out.println("글의 작성자가 아닙니다.");
             }
