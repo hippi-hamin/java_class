@@ -1,15 +1,18 @@
 package ch12_classes.ex06_memberboard.service;
 
+import ch10_class.ex11.Board;
 import ch12_classes.ex06_memberboard.common.CommonVariables;
 import ch12_classes.ex06_memberboard.dto.BoardDTO;
 import ch12_classes.ex06_memberboard.dto.CommentDTO;
 import ch12_classes.ex06_memberboard.repository.BoardRepository;
+import ch12_classes.ex06_memberboard.repository.CommentRepository;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class BoardService {
     BoardRepository boardRepository = new BoardRepository();
+    CommentRepository commentRepository = new CommentRepository();
     Scanner sc = new Scanner(System.in);
 
     public void save() {
@@ -45,7 +48,7 @@ public class BoardService {
             BoardDTO boardDTO = boardRepository.findById(id);
             System.out.println("boardDTO = " + boardDTO);
             System.out.println("====== 댓글 =======");
-            List<CommentDTO> commentDTOs = boardRepository.commentList();
+            List<CommentDTO> commentDTOs = commentRepository.commentList(id);
             if (commentDTOs.size() > 0) { // commentDTOs를 != null 이라는 형식으로 쓸 경우 오류가 자주 발생해서
                                           // commentDTOs.size() > 0 라는 형식을 많이 씀.
             // 댓글 전체를 표시해야 하기 때문에 for 문을 사용해줌
@@ -62,7 +65,7 @@ public class BoardService {
                 System.out.print("댓글 : ");
                 String commentContents = sc.nextLine();
                 CommentDTO commentDTO = new CommentDTO(id, CommonVariables.loginEmail, commentContents);
-                boolean result1 = boardRepository.comment(commentDTO);
+                boolean result1 = commentRepository.comment(commentDTO);
                 if (result1) {
                     System.out.println("댓글이 성공적으로 작성되었습니다.");
                 } else {
@@ -151,6 +154,13 @@ public class BoardService {
             System.out.println(boardDTO.getId() + "\t" + boardDTO.getBoardTitle() + "\t" +
                     boardDTO.getBoardWriter() + "\t" + boardDTO.getBoardHits() + "\t" +
                     boardDTO.getBoardCreatedAt() + "\t");
+        }
+    }
+
+    public void testData() {
+        for (int i = 0; i < 11; i++) {
+            BoardDTO boardDTO = new BoardDTO("title" + i, "writer" + i, "contents" + i);
+            boardRepository.save(boardDTO);
         }
     }
 }

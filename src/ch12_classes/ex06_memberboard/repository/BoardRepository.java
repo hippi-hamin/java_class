@@ -84,12 +84,4 @@ public class BoardRepository {
         }
         return searchList;
     }
-
-    public boolean comment(CommentDTO commentDTO) {
-        return commentDTOList.add(commentDTO);
-    }
-
-    public List<CommentDTO> commentList() {
-        return commentDTOList;
-    }
 }

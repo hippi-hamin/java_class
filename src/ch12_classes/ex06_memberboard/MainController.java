@@ -22,18 +22,25 @@ public class MainController {
             System.out.print("선택> ");
             selectNo = sc.nextInt();
             if (selectNo == 1) {
+                System.out.println("회원가입 메뉴");
                 memberService.save();
             } else if (selectNo == 2) {
+                System.out.println("로그인 메뉴");
                 memberService.login();
             } else if (selectNo == 3) {
+                System.out.println("회원목록 메뉴");
                 memberService.findAll();
             } else if (selectNo == 4) {
+                System.out.println("회원수정 메뉴");
                 memberService.update();
             } else if (selectNo == 5) {
+                System.out.println("회원탈퇴 메뉴");
                 memberService.delete();
             } else if (selectNo == 6) {
+                System.out.println("로그아웃 메뉴");
                 memberService.logout();
             } else if (selectNo == 7) {
+                System.out.println("게시판 메뉴");
                 if (memberService.loginResult()) {
                     while (run2) {
                         System.out.println("====== 게시판 ======");
@@ -43,19 +50,25 @@ public class MainController {
                         System.out.print("선택> ");
                         selectNo = sc.nextInt();
                         if (selectNo == 1) {
+                            System.out.println("글작성 메뉴");
                             boardService.save();
                         } else if (selectNo == 2) {
+                            System.out.println("글목록 메뉴");
                             boardService.findAll();
                         } else if (selectNo == 3) {
+                            System.out.println("글조회 메뉴");
                             boardService.findById();
                         } else if (selectNo == 4) {
+                            System.out.println("글수정 메뉴");
                             boardService.update();
                         } else if (selectNo == 5) {
+                            System.out.println("글삭제 메뉴");
                             boardService.delete();
                         } else if (selectNo == 6) {
+                            System.out.println("검색 메뉴");
                             boardService.search();
                         } else if (selectNo == 99) {
-
+                            boardService.testData();
                         } else if (selectNo == 0) {
                             System.out.println("메인 메뉴로 돌아갑니다.");
                             run2 = false;
@@ -65,7 +78,7 @@ public class MainController {
                     System.out.println("회원 전용 메뉴입니다.");
                 }
             } else if (selectNo == 0) {
-                System.out.println("종료");
+                System.out.println("프로그램 종료");
                 run = false;
             }
         }
