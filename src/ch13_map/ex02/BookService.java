@@ -1,5 +1,6 @@
 package ch13_map.ex02;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -49,4 +50,52 @@ public class BookService {
         }
     }
 
+    public void update() {
+        System.out.print("수정할 id : ");
+        Long id = sc.nextLong();
+        // 위에서 받은 id 값을 갖고 있는 책이 있는 지 찾는 문장
+        BookDTO bookDTO = bookRepository.findById(id);
+        if (bookDTO != null) {
+            // 조회결과 있음
+            System.out.println("수정할 가격 : ");
+            int bookPrice = sc.nextInt();
+            // 지정한 id의 책만 가격을 수정해야 되기 때문에 id 값과 bookPrice 값을 같이 보내주어야 함.
+            boolean updateResult = bookRepository.update(id, bookPrice);
+            if (updateResult) {
+                System.out.println("수정되었습니다.");
+            } else {
+                System.out.println("수정 실패하였습니다.");
+            }
+        } else {
+            // 조회결과 없음
+            System.out.println("조회결과가 없습니다!");
+        }
+    }
+
+    public void delete() {
+        System.out.println("삭제할 id : ");
+        Long id = sc.nextLong();
+        boolean result = bookRepository.delete(id);
+        if (result) {
+            System.out.println("삭제 성공");
+        } else {
+            System.out.println("삭제 실패");
+        }
+    }
+
+    public void search() {
+        System.out.print("검색어 : ");
+        String bookTitle = sc.next();
+        // 검색 결과가 여러 개 일 수 있기 때문에 List 메서드를 사용해 줌.
+        List<BookDTO> bookDTOList = bookRepository.search(bookTitle);
+        if (bookDTOList.size() > 0) {
+            for (BookDTO bookDTO : bookDTOList) {
+                System.out.println("bookDTO = " + bookDTO);
+            }
+        } else {
+            // bookDTOList.size() == 0 => 결과가 없다
+            System.out.println("검색 결과가 없습니다!");
+        }
+    }
 }
+

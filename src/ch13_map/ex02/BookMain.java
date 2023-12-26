@@ -32,13 +32,13 @@ public class BookMain {
 //                bookService.findByTitle();
             } else if (selectNo == 5) {
                 // 호출하는 문장 작성
-//                bookService.update();
+                bookService.update();
             } else if (selectNo == 6) {
                 // 호출하는 문장 작성
-//                bookService.delete();
+                bookService.delete();
             } else if (selectNo == 7) {
                 // 호출하는 문장 작성
-//                bookService.search();
+                bookService.search();
             }else if (selectNo == 0) {
                 run = false;
             }

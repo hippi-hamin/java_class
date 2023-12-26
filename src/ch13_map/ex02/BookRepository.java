@@ -1,6 +1,10 @@
 package ch13_map.ex02;
 
+import ch10_class.ex5.Book;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class BookRepository {
@@ -30,5 +34,36 @@ public class BookRepository {
             }
         }
         return null;
+    }
+
+    public boolean update(Long id, int bookPrice) {
+        for (Long i : bookDTOMap.keySet()) {
+            if (id.equals(bookDTOMap.get(i).getId())) {
+                bookDTOMap.get(i).setBookPrice(bookPrice);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean delete(Long id) {
+        for (Long i : bookDTOMap.keySet()) {
+            if (id.equals(bookDTOMap.get(i).getId())) {
+                bookDTOMap.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public List<BookDTO> search(String bookTitle) {
+        // 검색결과를 담을 list 선언
+        List<BookDTO> bookDTOList = new ArrayList<>();
+        for (Long i : bookDTOMap.keySet()) {
+            if (bookDTOMap.get(i).getBookTitle().contains(bookTitle)) {
+                bookDTOList.add(bookDTOMap.get(i));
+            }
+        }
+        return bookDTOList;
     }
 }
