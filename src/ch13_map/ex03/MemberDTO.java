@@ -1,6 +1,4 @@
-package ch12_classes.ex03;
-
-import ch10_class.ex10.Member;
+package ch13_map.ex03;
 
 public class MemberDTO {
     // 필드
@@ -77,4 +75,5 @@ public class MemberDTO {
                 ", memberMobile='" + memberMobile + '\'' +
                 '}';
     }
+
 }

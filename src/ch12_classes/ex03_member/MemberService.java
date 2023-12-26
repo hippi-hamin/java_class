@@ -1,6 +1,4 @@
-package ch12_classes.ex03;
-
-import ch12_classes.ex02.BookDTO;
+package ch12_classes.ex03_member;
 
 import java.util.List;
 import java.util.Scanner;

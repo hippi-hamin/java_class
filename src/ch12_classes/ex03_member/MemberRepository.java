@@ -1,4 +1,4 @@
-package ch12_classes.ex03;
+package ch12_classes.ex03_member;
 
 import java.util.ArrayList;
 import java.util.List;
