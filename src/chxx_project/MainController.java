@@ -59,7 +59,7 @@ public class MainController {
 
                     } else if (selectNo == 6) {
                         System.out.println("회원가입");
-
+                        memberService.save();
                     } else if (selectNo == 0) {
                         System.out.println("메인 메뉴로 돌아갑니다.");
                         run2 = false;
