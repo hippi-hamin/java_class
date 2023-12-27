@@ -47,7 +47,7 @@ public class MainController {
                     selectNo = sc.nextInt();
                     if (selectNo == 1) {
                         System.out.println("로그인");
-
+                        memberService.login();
                     } else if (selectNo == 2) {
 
                     } else if (selectNo == 3) {

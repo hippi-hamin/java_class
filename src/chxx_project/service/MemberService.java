@@ -1,5 +1,6 @@
 package chxx_project.service;
 
+import chxx_project.common.CommonVariables;
 import chxx_project.dto.MemberDTO;
 import chxx_project.repository.MemberRepository;
 
@@ -41,6 +42,26 @@ public class MemberService {
             System.out.println("회원가입 성공");
         } else {
             System.out.println("회원가입 실패");
+        }
+    }
+
+    public void login() {
+        if (CommonVariables.loginEmail != null) {
+            System.out.println("이미 로그인 되어있습니다.");
+        } else {
+            System.out.println("이메일 : ");
+            String memberEmail = sc.next();
+            System.out.print("비밀번호 : ");
+            String memberPassword = sc.next();
+            MemberDTO memberDTO = memberRepository.login(memberEmail, memberPassword);
+            if (memberDTO != null) {
+                // 조회결과 있음
+                CommonVariables.loginEmail = memberEmail;
+                System.out.println("로그인 성공");
+                System.out.println(CommonVariables.loginEmail + "사장님 환영합니다!");
+            } else {
+                System.out.println("로그인 실패");
+            }
         }
     }
 }
