@@ -5,7 +5,11 @@ import java.util.Scanner;
 
 public class MemberService {
     Scanner scanner = new Scanner(System.in);
+    // List or Map 둘 중 하나만 사용해야 함.
+    // List를 사용하는 경우
     MemberRepository memberRepository = new MemberRepositoryList();
+    // Map을 사용하는 경우
+//    MemberRepository memberRepository = new MemberRepositoryMap();
     private static String loginEmail = null;
 
     public void save() {
