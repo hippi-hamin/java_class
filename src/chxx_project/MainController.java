@@ -1,7 +1,7 @@
 package chxx_project;
 
 import chxx_project.service.KioskService;
-import chxx_project.service.MemberService;
+import chxx_project.service.ManagerService;
 
 import java.util.Scanner;
 
@@ -9,7 +9,7 @@ public class MainController {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         KioskService kioskService = new KioskService();
-        MemberService memberService = new MemberService();
+        ManagerService managerService = new ManagerService();
         boolean run = true;
 
         int selectNo = 0;
@@ -47,9 +47,10 @@ public class MainController {
                     selectNo = sc.nextInt();
                     if (selectNo == 1) {
                         System.out.println("로그인");
-                        memberService.login();
+                        managerService.login();
                     } else if (selectNo == 2) {
-
+                        System.out.println("메뉴 추가");
+                        managerService.menuSave();
                     } else if (selectNo == 3) {
 
                     } else if (selectNo == 4) {
@@ -59,7 +60,7 @@ public class MainController {
 
                     } else if (selectNo == 6) {
                         System.out.println("회원가입");
-                        memberService.save();
+                        managerService.save();
                     } else if (selectNo == 0) {
                         System.out.println("메인 메뉴로 돌아갑니다.");
                         run2 = false;
