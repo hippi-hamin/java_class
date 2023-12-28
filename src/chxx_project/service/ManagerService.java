@@ -78,6 +78,7 @@ public class ManagerService {
             // 커피메뉴 등록
             if (selectNo == 1) {
                 System.out.println("추가하실 커피의 정보를 입력하세요.");
+                String category = "커피";
                 System.out.print("커피 이름 : ");
                 String coffeeName = sc.next();
                 System.out.print("가격 : ");
@@ -97,7 +98,7 @@ public class ManagerService {
                 System.out.print("지방 : ");
                 String coffeeFats = sc.next();
 
-                CoffeeDTO coffeeDTO = new CoffeeDTO(coffeeName, coffeePrice, coffeeCaffein, coffeeCalories, coffeeCarbohydrate, coffeeSugars, coffeeProtein, coffeeNatrium, coffeeFats);
+                CoffeeDTO coffeeDTO = new CoffeeDTO(category, coffeeName, coffeePrice, coffeeCaffein, coffeeCalories, coffeeCarbohydrate, coffeeSugars, coffeeProtein, coffeeNatrium, coffeeFats);
                 boolean result = menuRepository.saveCoffee(coffeeDTO);
 
                 if (result) {
@@ -108,6 +109,7 @@ public class ManagerService {
                 // 차 메뉴 등록
             } else if (selectNo == 2) {
                 System.out.println("추가하실 차의 정보를 입력하세요.");
+                String category = "차";
                 System.out.print("차 이름 : ");
                 String teaName = sc.next();
                 System.out.print("가격 : ");
@@ -125,7 +127,7 @@ public class ManagerService {
                 System.out.print("지방 : ");
                 String teaFats = sc.next();
 
-                TeaDTO teaDTO = new TeaDTO(teaName, teaPrice, teaCalories, teaCarbohydrate, teaSugars, teaProtein, teaNatrium, teaFats);
+                TeaDTO teaDTO = new TeaDTO(category, teaName, teaPrice, teaCalories, teaCarbohydrate, teaSugars, teaProtein, teaNatrium, teaFats);
                 boolean result = menuRepository.saveTea(teaDTO);
 
                 if (result) {
@@ -135,6 +137,7 @@ public class ManagerService {
                 }
             } else if (selectNo == 3) {
                 System.out.println("추가하실 디저트의 정보를 입력하세요.");
+                String category = "디저트";
                 System.out.print("디저트 이름 : ");
                 String dessertName = sc.next();
                 System.out.print("가격 : ");
@@ -150,7 +153,7 @@ public class ManagerService {
                 System.out.print("지방 : ");
                 String dessertFats = sc.next();
 
-                DessertDTO dessertDTO = new DessertDTO(dessertName, dessertPrice, dessertCalories, dessertSugars, dessertProtein, dessertNatrium, dessertFats);
+                DessertDTO dessertDTO = new DessertDTO(category, dessertName, dessertPrice, dessertCalories, dessertSugars, dessertProtein, dessertNatrium, dessertFats);
                 boolean result = menuRepository.saveDessert(dessertDTO);
 
                 if (result) {

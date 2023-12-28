@@ -17,7 +17,7 @@ public class MainController {
             boolean run2 = true;
             System.out.println("====== 백곰카페 ======");
             System.out.println("-----------------------------------------------------------------------------------------");
-            System.out.println("1.All | 2.Coffee | 3.Tea | 4.Dessert | 5.basket | 6.Manager | 0.Quit");
+            System.out.println("1.All | 2.Coffee | 3.Tea | 4.Dessert | 5.Search | 6.basket | 7.Manager | 0.Quit");
             System.out.println("-----------------------------------------------------------------------------------------");
             System.out.print("선택> ");
             selectNo = sc.nextInt();
@@ -26,17 +26,20 @@ public class MainController {
                 kioskService.findAll();
             } else if (selectNo == 2) {
                 System.out.println("====== Coffee ======");
-
+                kioskService.coffeeAll();
             } else if (selectNo == 3) {
                 System.out.println("====== Tea ======");
-
+                kioskService.teaAll();
             } else if (selectNo == 4) {
                 System.out.println("====== Dessert ======");
-
+                kioskService.dessertAll();
             } else if (selectNo == 5) {
+                System.out.println("====== Search ======");
+                kioskService.search();
+            } else if (selectNo == 6) {
                 System.out.println("====== Basket ======");
 
-            } else if (selectNo == 6) {
+            } else if (selectNo == 7) {
                 System.out.println("관리자 메뉴");
                 while (run2) {
                     System.out.println("====== 관리자 메뉴 ======");

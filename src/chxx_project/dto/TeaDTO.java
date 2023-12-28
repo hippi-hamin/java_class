@@ -3,6 +3,7 @@ package chxx_project.dto;
 public class TeaDTO {
     // 필드
     private Long id;
+    private String category;
     private String teaName;
     private int teaPrice;
     private String teaCalories;
@@ -21,6 +22,14 @@ public class TeaDTO {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getTeaName() {
@@ -94,8 +103,9 @@ public class TeaDTO {
 
     // 필드값을 매개변수로 갖는 생성자
     public static Long idValue = 1L;
-    public TeaDTO(String teaName, int teaPrice, String teaCalories, String teaCarbohydrate, String teaSugars, String teaProtein, String teaNatrium, String teaFats) {
+    public TeaDTO(String category, String teaName, int teaPrice, String teaCalories, String teaCarbohydrate, String teaSugars, String teaProtein, String teaNatrium, String teaFats) {
         this.id = idValue;
+        this.category = category;
         this.teaName = teaName;
         this.teaPrice = teaPrice;
         this.teaCalories = teaCalories;

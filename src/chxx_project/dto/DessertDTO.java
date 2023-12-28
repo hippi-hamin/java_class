@@ -3,6 +3,7 @@ package chxx_project.dto;
 public class DessertDTO {
     // 필드
     private Long id;
+    private String category;
     private String dessertName;
     private int dessertPrice;
     private String dessertCalories;
@@ -19,6 +20,14 @@ public class DessertDTO {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getDessertName() {
@@ -84,8 +93,9 @@ public class DessertDTO {
 
     public static Long idValue = 1L;
     // 필드값을 매개변수로 갖는 생성자
-    public DessertDTO(String dessertName, int dessertPrice, String dessertCalories, String dessertSugars, String dessertProtein, String dessertNatrium, String dessertFats) {
+    public DessertDTO(String category, String dessertName, int dessertPrice, String dessertCalories, String dessertSugars, String dessertProtein, String dessertNatrium, String dessertFats) {
         this.id = idValue++;
+        this.category = category;
         this.dessertName = dessertName;
         this.dessertPrice = dessertPrice;
         this.dessertCalories = dessertCalories;
