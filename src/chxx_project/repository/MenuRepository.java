@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MenuRepository {
-    private static List<CoffeeDTO> coffeeDTOList = new ArrayList<>();
-    private static List<TeaDTO> teaDTOList = new ArrayList<>();
-    private static List<DessertDTO> dessertDTOList = new ArrayList<>();
+    public static List<CoffeeDTO> coffeeDTOList = new ArrayList<>();
+    public static List<TeaDTO> teaDTOList = new ArrayList<>();
+    public static List<DessertDTO> dessertDTOList = new ArrayList<>();
     public boolean saveCoffee(CoffeeDTO coffeeDTO) {
         return coffeeDTOList.add(coffeeDTO);
     }

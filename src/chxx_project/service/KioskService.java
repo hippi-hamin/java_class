@@ -15,7 +15,17 @@ public class KioskService {
         System.out.println("커피");
         List<CoffeeDTO> coffeeDTOList = kioskRepository.findAllCoffee();
         for (CoffeeDTO coffeeDTO : coffeeDTOList) {
-            System.out.println(coffeeDTO);
+            System.out.println(coffeeDTO.getCoffeeName());
+        }
+        System.out.println("차");
+        List<TeaDTO> teaDTOList = kioskRepository.findAllTea();
+        for (TeaDTO teaDTO : teaDTOList) {
+            System.out.println(teaDTO);
+        }
+        System.out.println("디저트");
+        List<DessertDTO> dessertDTOList = kioskRepository.findAllDessert();
+        for (DessertDTO dessertDTO : dessertDTOList) {
+            System.out.println(dessertDTO);
         }
     }
 }
