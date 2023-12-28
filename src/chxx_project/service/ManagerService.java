@@ -315,7 +315,7 @@ public class ManagerService {
         }
     }
 
-    public void menudelete() {
+    public void menuDelete() {
         if (CommonVariables.loginEmail != null) {
             boolean run = true;
             int selectNo = 0;

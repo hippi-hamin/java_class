@@ -23,7 +23,7 @@ public class MainController {
             selectNo = sc.nextInt();
             if (selectNo == 1) {
                 System.out.println("====== 전체 메뉴 ======");
-
+                kioskService.findAll();
             } else if (selectNo == 2) {
                 System.out.println("====== Coffee ======");
 
@@ -56,7 +56,7 @@ public class MainController {
                         managerService.menuUpdate();
                     } else if (selectNo == 4) {
                         System.out.println("메뉴 삭제");
-                        managerService.menudelete();
+                        managerService.menuDelete();
                     } else if (selectNo == 5) {
                         System.out.println("로그아웃");
                         managerService.logout();
