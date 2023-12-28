@@ -111,4 +111,101 @@ public class KioskService {
             System.out.println(dessertDTO.getCategory() + "\t" + dessertDTO.getDessertName() + "\t" + dessertDTO.getDessertPrice());
         }
     }
+
+    public void basket() {
+        int coffeePrice = 0;
+        int teaPrice = 0;
+        int dessertPrice = 0;
+        boolean run = true;
+        boolean run2 = true;
+        MenuRepository menuRepository = new MenuRepository();
+        while (run) {
+            int totalPrice = coffeePrice + teaPrice + dessertPrice;
+            System.out.println("원하는 메뉴를 입력해주세요");
+            System.out.println("-----------------------------------------------------------------------------------------");
+            System.out.println("1.커피 | 2.차 | 3.디저트 | 0.쇼핑종료");
+            System.out.println("-----------------------------------------------------------------------------------------");
+            System.out.print("선택> ");
+            int selectNo = sc.nextInt();
+            if (selectNo == 1) {
+                while (run2) {
+                    System.out.println("원하는 커피의 이름을 입력하세요.");
+                    String coffeeName = sc.next();
+                    boolean coffeeNameCheck = menuRepository.coffeeNameCheck(coffeeName);
+                    if (coffeeNameCheck) {
+                        System.out.println("주문할 양을 입력해 주세요.");
+                        int coffeeCount = sc.nextInt();
+                        coffeePrice = kioskRepository.basket1(coffeeName, coffeeCount);
+                    } else {
+                        System.out.println("없는 메뉴입니다.");
+                    }
+                    System.out.println("주문을 마치시겠습니까? 1.yes | 2.no");
+                    selectNo = sc.nextInt();
+                    if (selectNo == 1) {
+                        coffeePrice += coffeePrice;
+                        run2 = false;
+                    } else if (selectNo == 2) {
+                        System.out.println("추가로 주문해주세요.");
+                    }
+                }
+            } else if (selectNo == 2) {
+                while (run2) {
+                    System.out.println("원하는 차의 이름을 입력하세요.");
+                    String teaName = sc.next();
+                    boolean teaNameCheck = menuRepository.teaNameCheck(teaName);
+                    if (teaNameCheck) {
+                        System.out.println("주문할 양을 입력해주세요.");
+                        int teaCount = sc.nextInt();
+                        teaPrice = kioskRepository.basket2(teaName, teaCount);
+                    } else {
+                        System.out.println("없는 메뉴입니다.");
+                    }
+                    System.out.println("주문을 마치시겠습니까? 1.yes | 2.no");
+                    selectNo = sc.nextInt();
+                    if (selectNo == 1) {
+                        teaPrice += teaPrice;
+                        run2 = false;
+                    } else if (selectNo == 2) {
+                        System.out.println("추가로 주문해주세요.");
+                    }
+                }
+            } else if (selectNo == 3) {
+                while (run2) {
+                    System.out.println("원하는 디저트의 이름을 입력하세요.");
+                    String dessertName = sc.next();
+                    boolean dessertNameCheck = menuRepository.dessertNameCheck(dessertName);
+                    if (dessertNameCheck) {
+                        System.out.println("주문할 양을 입력하세요.");
+                        int dessertCount = sc.nextInt();
+                        dessertPrice = kioskRepository.basket3(dessertName, dessertCount);
+                    } else {
+                        System.out.println("없는 메뉴입니다.");
+                    }
+                    System.out.println("주문을 마치시겠습니까? 1.yes | 2.no");
+                    selectNo = sc.nextInt();
+                    if (selectNo == 1) {
+                        dessertPrice += dessertPrice;
+                        run2 = false;
+                    } else if (selectNo == 2) {
+                        System.out.println("추가로 주문해주세요.");
+                    }
+                }
+            } else if (selectNo == 0) {
+                totalPrice = coffeePrice + teaPrice + dessertPrice;
+                System.out.println("주문하신 상품의 총액은 " + totalPrice + "원 입니다.");
+                System.out.println("결제하시겠습니까? 1.yes | 2.no");
+                selectNo = sc.nextInt();
+                if (selectNo == 1) {
+                    System.out.println("결제에 성공하셨습니까? 1.yes | 2.no");
+                    selectNo = sc.nextInt();
+                    if (selectNo == 1) {
+                        System.out.println("이용해주셔서 감사합니다.");
+                        run = false;
+                    } else if (selectNo == 2) {
+                        System.out.println("결제에 실패하셨습니다.");
+                    }
+                }
+            }
+        }
+    }
 }

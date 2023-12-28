@@ -38,7 +38,7 @@ public class MainController {
                 kioskService.search();
             } else if (selectNo == 6) {
                 System.out.println("====== Basket ======");
-
+                kioskService.basket();
             } else if (selectNo == 7) {
                 System.out.println("관리자 메뉴");
                 while (run2) {

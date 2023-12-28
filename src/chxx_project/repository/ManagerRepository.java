@@ -5,7 +5,7 @@ import chxx_project.dto.MemberDTO;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MemberRepository {
+public class ManagerRepository {
     private static List<MemberDTO> memberDTOList = new ArrayList<>();
     public boolean emailCheck(String memberEmail) {
         boolean result = true;

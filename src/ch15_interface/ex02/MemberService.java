@@ -9,7 +9,7 @@ public class MemberService {
     // List를 사용하는 경우
     MemberRepository memberRepository = new MemberRepositoryList();
     // Map을 사용하는 경우
-//    MemberRepository memberRepository = new MemberRepositoryMap();
+//    ManagerRepository memberRepository = new MemberRepositoryMap();
     private static String loginEmail = null;
 
     public void save() {
