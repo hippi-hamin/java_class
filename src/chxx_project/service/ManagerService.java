@@ -402,5 +402,14 @@ public class ManagerService {
             System.out.println("해당 기능은 관리자만 사용 가능합니다. 로그인 해주세요.");
         }
     }
+
+    public void logout() {
+        if (CommonVariables.loginEmail != null) {
+            CommonVariables.loginEmail = null;
+            System.out.println("로그아웃 되었습니다.");
+        } else {
+            System.out.println("로그인 되어있지 않습니다.");
+        }
+    }
 }
 

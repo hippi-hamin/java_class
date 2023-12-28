@@ -58,8 +58,8 @@ public class MainController {
                         System.out.println("메뉴 삭제");
                         managerService.menudelete();
                     } else if (selectNo == 5) {
-
-
+                        System.out.println("로그아웃");
+                        managerService.logout();
                     } else if (selectNo == 6) {
                         System.out.println("회원가입");
                         managerService.save();
