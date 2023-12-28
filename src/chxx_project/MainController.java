@@ -52,9 +52,11 @@ public class MainController {
                         System.out.println("메뉴 추가");
                         managerService.menuSave();
                     } else if (selectNo == 3) {
+                        System.out.println("메뉴 수정");
                         managerService.menuUpdate();
                     } else if (selectNo == 4) {
-
+                        System.out.println("메뉴 삭제");
+                        managerService.menudelete();
                     } else if (selectNo == 5) {
 
 

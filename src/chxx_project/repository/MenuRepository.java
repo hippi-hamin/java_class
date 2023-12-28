@@ -115,4 +115,35 @@ public class MenuRepository {
         }
         return result;
     }
+
+    public boolean coffeeDelete(String menuName) {
+        boolean result = false;
+        for (int i = 0; i < coffeeDTOList.size(); i++) {
+            if (menuName.equals(coffeeDTOList.get(i).getCoffeeName())) {
+                coffeeDTOList.remove(i);
+                result = true;
+            }
+        }
+        return result;
+    }
+    public boolean teaDelete(String menuName) {
+        boolean result = false;
+        for (int i = 0; i < teaDTOList.size(); i++) {
+            if (menuName.equals(teaDTOList.get(i).getTeaName())) {
+                teaDTOList.remove(i);
+                result = true;
+            }
+        }
+        return result;
+    }
+    public boolean dessertDelete(String menuName) {
+        boolean result = false;
+        for (int i = 0; i < dessertDTOList.size(); i++) {
+            if (menuName.equals(dessertDTOList.get(i).getDessertName())) {
+                dessertDTOList.remove(i);
+                result = true;
+            }
+        }
+        return result;
+    }
 }

@@ -314,5 +314,93 @@ public class ManagerService {
             System.out.println("해당 기능은 관리자만 사용 가능합니다. 로그인 해주세요.");
         }
     }
+
+    public void menudelete() {
+        if (CommonVariables.loginEmail != null) {
+            boolean run = true;
+            int selectNo = 0;
+            while (run) {
+                boolean run2 = true;
+                System.out.println("삭제할 메뉴를 입력해주세요.");
+                System.out.println("-----------------------------------------------------------------------------------------");
+                System.out.println("1.커피 | 2.차 | 3.디저트 | 0.종료");
+                System.out.println("-----------------------------------------------------------------------------------------");
+                System.out.print("선택> ");
+                selectNo = sc.nextInt();
+                if (selectNo == 1) {
+                    System.out.println("커피를 선택하셨습니다.");
+                    System.out.println("삭제할 메뉴의 이름을 입력해주세요.");
+                    String menuName = sc.next();
+                    boolean coffeeNameCheck = menuRepository.coffeeNameCheck(menuName);
+                    if (coffeeNameCheck) {
+                        System.out.println("정말로 " + menuName + "메뉴를 삭제하시겠습니까?");
+                        System.out.println("원하시면 1번, 원하지 않으시면 2번을 입력하세요.");
+                        selectNo = sc.nextInt();
+                        if (selectNo == 1) {
+                            boolean deleteResult = menuRepository.coffeeDelete(menuName);
+                            if (deleteResult) {
+                                System.out.println(menuName + "을 삭제하였습니다.");
+                            } else {
+                                System.out.println("삭제 실패하였습니다.");
+                            }
+                        } else if (selectNo == 2) {
+                            System.out.println(menuName + "을 삭제하지 않았습니다.");
+                        }
+                    } else {
+                        System.out.println("해당 메뉴가 존재하지 않습니다.");
+                    }
+                } else if (selectNo == 2) {
+                    System.out.println("차를 선택하셨습니다.");
+                    System.out.println("삭제할 메뉴의 이름을 입력해주세요.");
+                    String menuName = sc.next();
+                    boolean teaNameCheck = menuRepository.teaNameCheck(menuName);
+                    if (teaNameCheck) {
+                        System.out.println("정말로 " + menuName + "메뉴를 삭제하시겠습니까?");
+                        System.out.println("원하시면 1번, 원하지 않으시면 2번을 입력하세요.");
+                        selectNo = sc.nextInt();
+                        if (selectNo == 1) {
+                            boolean deleteResult = menuRepository.teaDelete(menuName);
+                            if (deleteResult) {
+                                System.out.println(menuName + "을 삭제하였습니다.");
+                            } else {
+                                System.out.println("삭제 실패하였습니다.");
+                            }
+                        } else if (selectNo == 2) {
+                            System.out.println(menuName + "을 삭제하지 않았습니다.");
+                        }
+                    } else {
+                        System.out.println("해당 메뉴가 존재하지 않습니다.");
+                    }
+                } else if (selectNo == 3) {
+                    System.out.println("커피를 선택하셨습니다.");
+                    System.out.println("삭제할 메뉴의 이름을 입력해주세요.");
+                    String menuName = sc.next();
+                    boolean dessertNameCheck = menuRepository.dessertNameCheck(menuName);
+                    if (dessertNameCheck) {
+                        System.out.println("정말로 " + menuName + "메뉴를 삭제하시겠습니까?");
+                        System.out.println("원하시면 1번, 원하지 않으시면 2번을 입력하세요.");
+                        selectNo = sc.nextInt();
+                        if (selectNo == 1) {
+                            boolean deleteResult = menuRepository.dessertDelete(menuName);
+                            if (deleteResult) {
+                                System.out.println(menuName + "을 삭제하였습니다.");
+                            } else {
+                                System.out.println("삭제 실패하였습니다.");
+                            }
+                        } else if (selectNo == 2) {
+                            System.out.println(menuName + "을 삭제하지 않았습니다.");
+                        }
+                    } else {
+                        System.out.println("해당 메뉴가 존재하지 않습니다.");
+                    }
+                } else if (selectNo == 0) {
+                    System.out.println("메뉴 삭제 기능을 종료합니다.");
+                    run = false;
+                }
+            }
+        } else {
+            System.out.println("해당 기능은 관리자만 사용 가능합니다. 로그인 해주세요.");
+        }
+    }
 }
 
