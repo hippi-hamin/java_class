@@ -52,7 +52,7 @@ public class MainController {
                         System.out.println("메뉴 추가");
                         managerService.menuSave();
                     } else if (selectNo == 3) {
-
+                        managerService.menuUpdate();
                     } else if (selectNo == 4) {
 
                     } else if (selectNo == 5) {

@@ -20,7 +20,6 @@ public class ManagerService {
         boolean checkResult = false;
         String memberEmail = null;
         do {
-            System.out.println("회원가입 메뉴");
             System.out.print("사용할 이메일 : ");
             memberEmail = sc.next();
             // checkResult가 true => 사용가능(반복문 종료), checkResult가 false => 사용불가(다시 이메일입력)
@@ -106,7 +105,7 @@ public class ManagerService {
                 } else {
                     System.out.println("메뉴가 등록되지 않았습니다.");
                 }
-            // 차 메뉴 등록
+                // 차 메뉴 등록
             } else if (selectNo == 2) {
                 System.out.println("추가하실 차의 정보를 입력하세요.");
                 System.out.print("차 이름 : ");
@@ -119,7 +118,6 @@ public class ManagerService {
                 String teaCarbohydrate = sc.next();
                 System.out.print("당류 : ");
                 String teaSugars = sc.next();
-                System.out.println("");
                 System.out.print("단백질 : ");
                 String teaProtein = sc.next();
                 System.out.print("나트륨 : ");
@@ -162,6 +160,156 @@ public class ManagerService {
                 }
             }
             // 로그인 되어 있지 않은 경우
+        } else {
+            System.out.println("해당 기능은 관리자만 사용 가능합니다. 로그인 해주세요.");
+        }
+    }
+
+    public void menuUpdate() {
+        if (CommonVariables.loginEmail != null) {
+            boolean run = true;
+            int selectNo = 0;
+            while (run) {
+                boolean run2 = true;
+                System.out.println("수정할 메뉴를 입력해주세요.");
+                System.out.println("-----------------------------------------------------------------------------------------");
+                System.out.println("1.커피 | 2.차 | 3.디저트 | 0.종료");
+                System.out.println("-----------------------------------------------------------------------------------------");
+                System.out.print("선택> ");
+                selectNo = sc.nextInt();
+                if (selectNo == 1) {
+                    System.out.println("커피를 선택하셨습니다.");
+                    while (run2) {
+                        System.out.println("변경을 희망하는 정보를 입력해주세요.");
+                        System.out.println("1.이름 | 2.가격 | 0.수정할 메뉴선택");
+                        selectNo = sc.nextInt();
+                        if (selectNo == 1) {
+                            System.out.println("이름을 변경할 메뉴를 입력해주세요.");
+                            String menuName = sc.next();
+                            boolean coffeeNameCheck = menuRepository.coffeeNameCheck(menuName);
+                            if (coffeeNameCheck) {
+                                System.out.println("변경할 이름을 작성하세요.");
+                                String updateCoffeeName = sc.next();
+                                boolean updateResult = menuRepository.updateCoffeeName(menuName, updateCoffeeName);
+                                if (updateResult) {
+                                    System.out.println("커피의 이름이 성공적으로 변경되었습니다.");
+                                } else {
+                                    System.out.println("이름이 변경되지 않았습니다. 다시 시도해주세요.");
+                                }
+                            } else {
+                                System.out.println("해당 이름을 가진 메뉴가 없습니다.");
+                            }
+                        } else if (selectNo == 2) {
+                            System.out.println("가격을 변경할 메뉴를 입력해주세요.");
+                            String menuName = sc.next();
+                            boolean coffeeNameCheck = menuRepository.coffeeNameCheck(menuName);
+                            if (coffeeNameCheck) {
+                                System.out.println("변경할 가격을 작성하세요.");
+                                int updateCoffeePrice = sc.nextInt();
+                                boolean updateResult = menuRepository.updateCoffeePrice(menuName, updateCoffeePrice);
+                                if (updateResult) {
+                                    System.out.println("커피의 가격이 성공적으로 변경되었습니다.");
+                                } else {
+                                    System.out.println("가격이 변경되지 않았습니다. 다시 시도해주세요.");
+                                }
+                            } else {
+                                System.out.println("해당 이름을 가진 메뉴가 없습니다.");
+                            }
+                        } else if (selectNo == 0) {
+                            System.out.println("메뉴선택으로 돌아갑니다.");
+                            run2 = false;
+                        }
+                    }
+                } else if (selectNo == 2) {
+                    System.out.println("차를 선택하셨습니다.");
+                    while (run2) {
+                        System.out.println("변경을 희망하는 정보를 입력해주세요.");
+                        System.out.println("1.이름 | 2.가격 | 0.수정할 메뉴선택");
+                        selectNo = sc.nextInt();
+                        if (selectNo == 1) {
+                            System.out.println("이름을 변경할 메뉴를 입력해주세요.");
+                            String menuName = sc.next();
+                            boolean teaNameCheck = menuRepository.teaNameCheck(menuName);
+                            if (teaNameCheck) {
+                                System.out.println("변경할 이름을 작성하세요.");
+                                String updateTeaName = sc.next();
+                                boolean updateResult = menuRepository.updateTeaName(menuName, updateTeaName);
+                                if (updateResult) {
+                                    System.out.println("차의 이름이 성공적으로 변경되었습니다.");
+                                } else {
+                                    System.out.println("이름이 변경되지 않았습니다. 다시 시도해주세요.");
+                                }
+                            } else {
+                                System.out.println("해당 이름을 가진 메뉴가 없습니다.");
+                            }
+                        } else if (selectNo == 2) {
+                            System.out.println("가격을 변경할 메뉴를 입력해주세요.");
+                            String menuName = sc.next();
+                            boolean teaNameCheck = menuRepository.teaNameCheck(menuName);
+                            if (teaNameCheck) {
+                                System.out.println("변경할 가격을 작성하세요.");
+                                int updateTeaPrice = sc.nextInt();
+                                boolean updateResult = menuRepository.updateTeaPrice(menuName, updateTeaPrice);
+                                if (updateResult) {
+                                    System.out.println("차의 가격이 성공적으로 변경되었습니다.");
+                                } else {
+                                    System.out.println("가격이 변경되지 않았습니다. 다시 시도해주세요.");
+                                }
+                            } else {
+                                System.out.println("해당 이름을 가진 메뉴가 없습니다.");
+                            }
+                        } else if (selectNo == 0) {
+                            System.out.println("메뉴선택으로 돌아갑니다.");
+                            run2 = false;
+                        }
+                    }
+                } else if (selectNo == 3) {
+                    System.out.println("디저트를 선택하셨습니다.");
+                    while (run2) {
+                        System.out.println("변경을 희망하는 정보를 입력해주세요.");
+                        System.out.println("1.이름 | 2.가격 | 0.수정할 메뉴선택");
+                        selectNo = sc.nextInt();
+                        if (selectNo == 1) {
+                            System.out.println("이름을 변경할 메뉴를 입력해주세요.");
+                            String menuName = sc.next();
+                            boolean dessertNameCheck = menuRepository.dessertNameCheck(menuName);
+                            if (dessertNameCheck) {
+                                System.out.println("변경할 이름을 작성하세요.");
+                                String updateDessertName = sc.next();
+                                boolean updateResult = menuRepository.updateDessertName(menuName, updateDessertName);
+                                if (updateResult) {
+                                    System.out.println("디저트의 이름이 성공적으로 변경되었습니다.");
+                                } else {
+                                    System.out.println("이름이 변경되지 않았습니다. 다시 시도해주세요.");
+                                }
+                            } else {
+                                System.out.println("해당 이름을 가진 메뉴가 없습니다.");
+                            }
+                        } else if (selectNo == 2) {
+                            System.out.println("가격을 변경할 메뉴를 입력해주세요.");
+                            String menuName = sc.next();
+                            boolean dessertNameCheck = menuRepository.dessertNameCheck(menuName);
+                            if (dessertNameCheck) {
+                                System.out.println("변경할 가격을 작성하세요.");
+                                int updateDessertPrice = sc.nextInt();
+                                boolean updateResult = menuRepository.updateDessertPrice(menuName, updateDessertPrice);
+                                if (updateResult) {
+                                    System.out.println("차의 가격이 성공적으로 변경되었습니다.");
+                                } else {
+                                    System.out.println("가격이 변경되지 않았습니다. 다시 시도해주세요.");
+                                }
+                            } else {
+                                System.out.println("해당 이름을 가진 메뉴가 없습니다.");
+                            }
+                        } else if (selectNo == 0) {
+                            System.out.println("메뉴선택으로 돌아갑니다.");
+                            run2 = false;
+                        }
+                    }
+                } else if (selectNo == 0) {
+                    run = false;
+                }
+            }
         } else {
             System.out.println("해당 기능은 관리자만 사용 가능합니다. 로그인 해주세요.");
         }

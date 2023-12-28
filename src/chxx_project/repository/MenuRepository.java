@@ -22,4 +22,97 @@ public class MenuRepository {
     public boolean saveDessert(DessertDTO dessertDTO) {
         return dessertDTOList.add(dessertDTO);
     }
+
+    public boolean coffeeNameCheck(String menuName) {
+        boolean result = false;
+        for (int i = 0; i < coffeeDTOList.size(); i++) {
+            // 해당 커피 이름이 있는 지 찾기.
+            if (menuName.equals(coffeeDTOList.get(i).getCoffeeName())) {
+                result = true;
+            }
+        }
+        return result;
+    }
+
+    public boolean updateCoffeeName(String menuName, String updateCoffeeName) {
+        boolean result = false;
+        for (int i = 0; i < coffeeDTOList.size(); i++) {
+            if (menuName.equals(coffeeDTOList.get(i).getCoffeeName())) {
+                coffeeDTOList.get(i).setCoffeeName(updateCoffeeName);
+                result = true;
+            }
+        }
+        return result;
+    }
+    public boolean updateCoffeePrice(String menuName, int updateCoffeePrice) {
+        boolean result = false;
+        for (int i = 0; i < coffeeDTOList.size(); i++) {
+            if (menuName.equals(coffeeDTOList.get(i).getCoffeeName())) {
+                coffeeDTOList.get(i).setCoffeePrice(updateCoffeePrice);
+                result = true;
+            }
+        }
+        return result;
+    }
+
+    public boolean teaNameCheck(String menuName) {
+        boolean result = false;
+        for (int i = 0; i < teaDTOList.size(); i++) {
+            // 해당 차의 이름이 있는 지 찾기
+            if (menuName.equals(teaDTOList.get(i).getTeaName())) {
+                result = true;
+            }
+        }
+        return result;
+    }
+    public boolean updateTeaName(String menuName, String updateTeaName) {
+        boolean result = false;
+        for (int i = 0; i < teaDTOList.size(); i++) {
+            if (menuName.equals(teaDTOList.get(i).getTeaName())) {
+                teaDTOList.get(i).setTeaName(updateTeaName);
+                result = true;
+            }
+        }
+        return result;
+    }
+    public boolean updateTeaPrice(String menuName, int updateTeaPrice) {
+        boolean result = false;
+        for (int i = 0; i < teaDTOList.size(); i++) {
+            if (menuName.equals(teaDTOList.get(i).getTeaName())) {
+                teaDTOList.get(i).setTeaPrice(updateTeaPrice);
+                result = true;
+            }
+        }
+        return result;
+    }
+    public boolean dessertNameCheck(String menuName) {
+        boolean result = false;
+        for (int i = 0; i < dessertDTOList.size(); i++) {
+            // 해당 차의 이름이 있는 지 찾기
+            if (menuName.equals(dessertDTOList.get(i).getDessertName())) {
+                result = true;
+            }
+        }
+        return result;
+    }
+    public boolean updateDessertName(String menuName, String updateDessertName) {
+        boolean result = false;
+        for (int i = 0; i < dessertDTOList.size(); i++) {
+            if (menuName.equals(dessertDTOList.get(i).getDessertName())) {
+                dessertDTOList.get(i).setDessertName(updateDessertName);
+                result = true;
+            }
+        }
+        return result;
+    }
+    public boolean updateDessertPrice(String menuName, int updateDessertPrice) {
+        boolean result = false;
+        for (int i = 0; i < dessertDTOList.size(); i++) {
+            if (menuName.equals(dessertDTOList.get(i).getDessertName())) {
+                dessertDTOList.get(i).setDessertPrice(updateDessertPrice);
+                result = true;
+            }
+        }
+        return result;
+    }
 }
