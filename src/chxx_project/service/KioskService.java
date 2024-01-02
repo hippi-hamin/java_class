@@ -1,6 +1,5 @@
 package chxx_project.service;
 
-import ch12_classes.ex06_memberboard.dto.BoardDTO;
 import chxx_project.dto.CoffeeDTO;
 import chxx_project.dto.DessertDTO;
 import chxx_project.dto.TeaDTO;
